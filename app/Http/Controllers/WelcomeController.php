@@ -1,0 +1,10 @@
+11<?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    class WelcomeController extends Controller
+    {
+        //
+    }
