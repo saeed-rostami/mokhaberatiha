@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -34,10 +35,12 @@ class NoteController extends Controller
             'note' => ['required', 'string'],
         ]);
 
+
         $data['user_id'] = 1;
+
         $note = Note::create($data);
 
-        return to_route('note.show', $note)->with('message', 'Note added');
+        return to_route('note.show', $note)->with('message', 'نوت جدید اضافه شد');
     }
 
     /**
@@ -45,6 +48,8 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
+        dd($note);
+//        $note = Note::where('id',$note)->first();
         return view('note.show', ['note' => $note]);
     }
 

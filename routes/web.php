@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\RegisterUserController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('website.index');
@@ -42,3 +43,9 @@ Route::get('/get_city/{id}', [RegisterUserController::class, 'cities'])->name('r
 Route::post('/register', [RegisterUserController::class, 'store'])->name('register.store');
 Route::get('/login', [LoginUserController::class, 'login'])->name('login');
 Route::post('/login', [LoginUserController::class, 'store'])->name('login.store');
+Route::get('/logout', [LoginUserController::class, 'logout'])->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/404', [DashboardController::class, 'notfound'])->name('dashboard.notfound');
+});
