@@ -46,6 +46,6 @@ class RegisterUserController extends Controller
 
 
 
-        return to_route('posts.index');
+        return to_route('dashboard.index');
     }
 }

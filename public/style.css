@@ -331,7 +331,7 @@ li:focus {
   margin: 0 !important;
 }
 
- 
+
 .top-sidebar-r */
 
 .top-sidebar-r {
@@ -1280,3 +1280,8 @@ li:focus {
 .menu ul li {
 	padding: 0 10px;
 }
+
+body > div.main-header > div > div.col-md-10 > div > ul > li > a:hover  {
+    color: #070478;
+}
+

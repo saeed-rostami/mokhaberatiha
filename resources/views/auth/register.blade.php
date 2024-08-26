@@ -17,7 +17,7 @@
         <div class="mt-4">
 
             <x-input-label for="province" :value="__('استان')" />
-            <select id="province" class="block mt-1 w-full" type="text" name="province" :value="old('province')"
+            <select style="padding-right: 35px" id="province" class="block mt-1 w-full" type="text" name="province" :value="old('province')"
                 required autofocus autocomplete="province">
                 <option class="form-control" value="">انتخاب استان</option>
                 @foreach ($provinces as $info)
@@ -36,7 +36,7 @@
         <div class="mt-4">
 
             <x-input-label for="city" :value="__('شهر')" />
-            <select id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')"
+            <select style="padding-right: 35px" id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')"
                 required autofocus autocomplete="city">
                 <option class="form-control" value="">انتخاب شهر</option>
             </select>
