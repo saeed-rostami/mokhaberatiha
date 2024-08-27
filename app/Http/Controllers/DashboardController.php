@@ -15,4 +15,8 @@ class DashboardController extends Controller
     {
         return view('dashboard.notfound');
     }
+
+    public function sendmesssage() {
+        return view('dashboard.sendmesssage');
+    }
 }

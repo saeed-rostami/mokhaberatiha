@@ -12,13 +12,13 @@
     <title>داشبورد سایت مخابراتی ها</title>
 
     <!-- Custom fonts for this template-->
-    <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        href="{{asset('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i')}}"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="admin/css/sb-admin-2.css" rel="stylesheet">
+    <link href="{{ asset('admin/css/sb-admin-2.css') }}" rel="stylesheet">
 
 </head>
 
@@ -47,6 +47,36 @@
                 <span>داشبورد</span></a>
         </li>
 
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            مدیریت کاربران
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+{{--        <li class="nav-item">--}}
+{{--            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"--}}
+{{--               aria-expanded="true" aria-controls="collapseTwo">--}}
+{{--                <i class="fas fa-fw fa-cog"></i>--}}
+{{--                <span>Components</span>--}}
+{{--            </a>--}}
+{{--            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">--}}
+{{--                <div class="bg-white py-2 collapse-inner rounded">--}}
+{{--                    <h6 class="collapse-header">Custom Components:</h6>--}}
+{{--                    <a class="collapse-item" href="buttons.html">Buttons</a>--}}
+{{--                    <a class="collapse-item" href="cards.html">Cards</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </li>--}}
+
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route("dashboard.sendmesssage") }}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>ارسال پیام عمومی</span></a>
+        </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -373,7 +403,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2021</span>
+{{--                    <span>Copyright &copy; Your Website 2021</span>--}}
                 </div>
             </div>
         </footer>
@@ -412,21 +442,21 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="admin/vendor/jquery/jquery.min.js"></script>
-<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="admin/js/sb-admin-2.min.js"></script>
+<script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
 
 <!-- Page level plugins -->
-<script src="admin/vendor/chart.js/Chart.min.js"></script>
+<script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
 
 <!-- Page level custom scripts -->
-<script src="admin/js/demo/chart-area-demo.js"></script>
-<script src="admin/js/demo/chart-pie-demo.js"></script>
+<script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
+<script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
 
 </body>
 
