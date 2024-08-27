@@ -10534,7 +10534,7 @@ a:focus {
   .sidebar .nav-item .nav-link {
     display: block;
     width: 100%;
-    text-align: left;
+    text-align: right;
     padding: 1rem;
     width: 14rem;
   }
@@ -10566,7 +10566,7 @@ a:focus {
     display: inline;
   }
   .sidebar .sidebar-heading {
-    text-align: left;
+    text-align: right;
   }
   .sidebar.toggled {
     overflow: visible;
