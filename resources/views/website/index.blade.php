@@ -137,71 +137,27 @@
             <div class="col-md-3">
                 <div class="top-sidebar-l">
                     <span class="title">یادداشت</span>
-                    <a href="#">
-                        <div class="bx">
-                            <div class="col-md-3 nopadding">
-                                <span><i class="fa fa-heart"></i> 56</span>
-                            </div>
-                            <div class="col-md-8 nopadding">
-                                <h3>رم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک
-                                    است. چاپگرها و متو
-                                </h3>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="bx">
-                            <div class="col-md-3 nopadding">
-                                <span><i class="fa fa-heart"></i> 78</span>
-                            </div>
-                            <div class="col-md-8 nopadding">
-                                <h3>رم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک
-                                    است. چاپگرها و متو
-                                </h3>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="bx">
-                            <div class="col-md-3 nopadding">
-                                <span><i class="fa fa-heart"></i> 321</span>
-                            </div>
-                            <div class="col-md-8 nopadding">
-                                <h3>رم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک
-                                    است. چاپگرها و متو
-                                </h3>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="bx">
-                            <div class="col-md-3 nopadding">
-                                <span><i class="fa fa-heart"></i> 56</span>
-                            </div>
-                            <div class="col-md-8 nopadding">
-                                <h3>رم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک
-                                    است. چاپگرها و متو
-                                </h3>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="bx">
-                            <div class="col-md-3 nopadding">
-                                <span><i class="fa fa-heart"></i> 56</span>
-                            </div>
-                            <div class="col-md-8 nopadding">
-                                <h3>رم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک
-                                    است. چاپگرها و متو
-                                </h3>
-                            </div>
-                        </div>
-                    </a>
+                    @if(is_null($notices))
+                        <span></span>
+                    @else
+                        @foreach($notices as $notice)
+                            <a href="{{ route('notice.page', $notice->id) }}">
+                                <div class="bx">
+                                    <div class="col-md-3 nopadding">
+                                        <span><i class="fa fa-heart"></i> 56</span>
+                                    </div>
+                                    <div class="col-md-8 nopadding">
+                                        <h3>
+                                            {{ $notice->title }}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
+
+                    @endif
+
+
                 </div>
             </div>
         </div>

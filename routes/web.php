@@ -7,9 +7,17 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\DashboardController;
 
+use App\Models\Notice;
+
 Route::get('/', function () {
-    return view('website.index');
+    $notices = \App\Models\Notice::all();
+    return view('website.index', compact('notices'));
 });
+
+Route::get('/notice/{id}', function ($id) {
+    $notice = Notice::find($id);
+    return view('website.notice', compact('notice'));
+})->name('notice.page');
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
