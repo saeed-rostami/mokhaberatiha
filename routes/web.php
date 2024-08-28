@@ -49,4 +49,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/404', [DashboardController::class, 'notfound'])->name('dashboard.notfound');
     Route::get('/dashboard/sendmesssage', [DashboardController::class, 'sendmesssage'])->name('dashboard.sendmesssage');
+    Route::resource('notice', \App\Http\Controllers\NoticeController::class);
 });
