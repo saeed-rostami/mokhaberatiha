@@ -24,7 +24,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin/css/sb-admin-2.css') }}" rel="stylesheet">
-
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body id="page-top">

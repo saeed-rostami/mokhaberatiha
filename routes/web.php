@@ -10,14 +10,9 @@ use App\Http\Controllers\DashboardController;
 use App\Models\Notice;
 
 Route::get('/', function () {
-    $notices = \App\Models\Notice::all();
+    $notices = Notice::latest()->take(5)->get();
     return view('website.index', compact('notices'));
 });
-
-Route::get('/notice/{id}', function ($id) {
-    $notice = Notice::find($id);
-    return view('website.notice', compact('notice'));
-})->name('notice.page');
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
@@ -59,3 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/sendmesssage', [DashboardController::class, 'sendmesssage'])->name('dashboard.sendmesssage');
     Route::resource('notice', \App\Http\Controllers\NoticeController::class);
 });
+
+Route::get('/notice/{id}', function ($id) {
+    $notice = Notice::find($id);
+    return view('website.notice', compact('notice'));
+})->name('notice.page');
