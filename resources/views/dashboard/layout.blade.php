@@ -24,8 +24,10 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin/css/sb-admin-2.css') }}" rel="stylesheet">
+
+    @yield('custom_css')
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 
 <body id="page-top">
@@ -460,6 +462,8 @@
         <!-- Page level custom scripts -->
         <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
         <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
+
+        @yield('custom_js')
 
     </body>
 

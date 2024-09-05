@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Middleware\isAdmin;
+
+
 
 use App\Models\Notice;
 
@@ -49,10 +52,12 @@ Route::post('/login', [LoginUserController::class, 'store'])->name('login.store'
 Route::get('/logout', [LoginUserController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
+    // Route::middleware('isAdmin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/404', [DashboardController::class, 'notfound'])->name('dashboard.notfound');
     Route::get('/dashboard/sendmesssage', [DashboardController::class, 'sendmesssage'])->name('dashboard.sendmesssage');
     Route::resource('notice', \App\Http\Controllers\NoticeController::class);
+    // });
 });
 
 Route::get('/notice/{id}', function ($id) {

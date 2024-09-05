@@ -1,5 +1,9 @@
 @extends('dashboard.layout')
 
+@section('custom_css')
+    <link rel="stylesheet" href="{{ asset('ckeditor5/ckeditor5.css') }}" />
+@endsection
+
 @section('content')
     <div class="container">
 
@@ -17,14 +21,15 @@
                                 @csrf
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                        <input name="title" type="text" class="form-control form-control-user" id="exampleFirstName"
-                                               placeholder="تیتر">
+                                        <input name="title" type="text" class="form-control form-control-user"
+                                            id="exampleFirstName" placeholder="تیتر">
                                     </div>
 
                                 </div>
                                 <div class="form-group">
-                                    <input name="content" type="text" class="form-control form-control-user" id="exampleInputEmail"
-                                           placeholder="متن اطلاعیه">
+                                    <textarea name="content" id="editor">
+                                        {{-- <p>Hello from CKEditor 5!</p> --}}
+                                    </textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
@@ -40,5 +45,46 @@
         </div>
 
     </div>
+@endsection
 
+@section('custom_js')
+    <script type="importmap">
+    {
+      "imports": {
+        "ckeditor5": "{{ asset('ckeditor5/ckeditor5.js')}}",
+        "ckeditor5/": "{{ asset('ckeditor5')}}"
+      }
+    }
+  </script>
+    <script type="module">
+        import {
+            ClassicEditor,
+            Essentials,
+            Paragraph,
+            Bold,
+            Italic,
+            Font,
+        } from "ckeditor5";
+
+        ClassicEditor.create(document.querySelector("#editor"), {
+                plugins: [Essentials, Paragraph, Bold, Italic, Font],
+                toolbar: [
+                    "undo",
+                    "redo",
+                    "|",
+                    "bold",
+                    "italic",
+                    "|",
+                    "fontSize",
+                    "fontFamily",
+                    "|",
+                ],
+            })
+            .then((editor) => {
+                window.editor = editor;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    </script>
 @endsection

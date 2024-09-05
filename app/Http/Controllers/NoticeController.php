@@ -29,6 +29,7 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'content' => 'required|string|max:255',
             'title' => 'required|string|max:255',
@@ -39,7 +40,6 @@ class NoticeController extends Controller
 
         // Redirect or return a response
         return redirect('notice')->with('success', 'اطلاعیه با موفقیت ثبت شد!');
-
     }
 
     /**

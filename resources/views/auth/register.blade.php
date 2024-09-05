@@ -4,10 +4,20 @@
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('نام - نام خانوداگی')" />
+            <x-input-label for="name" :value="__('نام')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
                 autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            {{-- @error('name')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror --}}
+        </div>
+
+        <div>
+            <x-input-label for="last_name" :value="__('نام خانوداگی')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('last_name')"
+                required autofocus autocomplete="last_name" />
+            <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
             {{-- @error('name')
                 <span class="text-red-500 text-sm">{{ $message }}</span>
             @enderror --}}
@@ -17,8 +27,8 @@
         <div class="mt-4">
 
             <x-input-label for="province" :value="__('استان')" />
-            <select style="padding-right: 35px" id="province" class="block mt-1 w-full" type="text" name="province" :value="old('province')"
-                required autofocus autocomplete="province">
+            <select style="padding-right: 35px" id="province" class="block mt-1 w-full" type="text" name="province"
+                :value="old('province')" required autofocus autocomplete="province">
                 <option class="form-control" value="">انتخاب استان</option>
                 @foreach ($provinces as $info)
                     <option value="{{ $info['id'] }}">{{ $info['name'] }}</option>
@@ -36,8 +46,8 @@
         <div class="mt-4">
 
             <x-input-label for="city" :value="__('شهر')" />
-            <select style="padding-right: 35px" id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')"
-                required autofocus autocomplete="city">
+            <select style="padding-right: 35px" id="city" class="block mt-1 w-full" type="text" name="city"
+                :value="old('city')" required autofocus autocomplete="city">
                 <option class="form-control" value="">انتخاب شهر</option>
             </select>
             {{-- <x-text-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')"
