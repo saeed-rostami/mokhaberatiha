@@ -2,28 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\Province;
 use App\Models\User;
-use Doctrine\Inflector\Rules\English\Rules;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Password;
-use App\Models\IranCity;
-use App\Models\IranCounty;
-use App\Models\IranProvince;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterUserController extends Controller
 {
     public function register()
     {
-        $provinces = IranProvince::active()->get();
+        $provinces = Province::all();
 
-        return view('auth.register', ['provinces' => $provinces]);
+        return view('auth.register', compact('provinces'));
     }
 
     public function cities($id)
     {
-        $city = IranCity::active()->whereIn('province_id', [$id])->get();
+        $city = City::query()->whereIn('province_id', [$id])->get();
         return $city;
     }
 
@@ -32,20 +29,23 @@ class RegisterUserController extends Controller
 
         $request->validate([
             'name' => ['required', 'max:255', 'min:1', 'string'],
+            'last_name' => ['required', 'max:255', 'min:1', 'string'],
+            'phone_number' => ['required'],
             'email' => 'required|email|unique:users',
             'password' => ['required', 'min:8', 'confirmed', Password::defaults()],
         ]);
 
         $user = User::create([
+            'last_name' => $request->last_name,
             'name' => $request->name,
             'email' => $request->email,
+            'phone_number' => $request->phone_number,
             'password' => Hash::make($request->password),
         ]);
 
         auth()->login($user);
+        return view("index");
 
-
-
-        return to_route('dashboard.index');
+//        return to_route('dashboard.index');
     }
 }

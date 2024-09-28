@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
+use App\Models\Province;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -35,6 +37,26 @@ class DatabaseSeeder extends Seeder
             'phone_number' => '09118395667',
             'is_admin' => 0
         ]);
+
+        $cities = json_decode(file_get_contents("resources/cities.json"));
+        $provinces = json_decode(file_get_contents("resources/provinces.json"));
+
+        foreach ($provinces as $province) {
+
+            Province::query()
+                ->create([
+                    "name" => $province->name
+                ]);
+        }
+
+        foreach ($cities as $city) {
+            City::query()
+                ->create([
+                    "name" => $city->name,
+                    "province_id" => $city->province_id,
+                ]);
+        }
+
 
         // Note::factory(100)->create();
     }

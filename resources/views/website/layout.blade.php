@@ -33,7 +33,7 @@
                 <div class="col-md-12">
                     <div class="menu">
                         <ul>
-                            <li>{{ \Morilog\Jalali\Jalalian::now() }}
+                            <li>{{ now() }}
                             </li>
                         </ul>
                     </div>

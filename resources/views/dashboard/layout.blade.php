@@ -91,8 +91,8 @@
                 <div id="users" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">مدیریت کاربران ها:</h6>
-                        <a class="collapse-item" href="utilities-color.html">لیست کاربران</a>
-                        <a class="collapse-item" href="utilities-border.html">کامنت های کاربران</a>
+                        <a class="collapse-item" href="{{route("user.index")}}">لیست کاربران</a>
+{{--                        <a class="collapse-item" {{route("user.index")}}>کامنت های کاربران</a>--}}
                     </div>
                 </div>
             </li>

@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Middleware\isAdmin;
 
 
 
@@ -16,6 +15,7 @@ Route::get('/', function () {
     $notices = Notice::latest()->take(5)->get();
     return view('website.index', compact('notices'));
 });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
@@ -33,6 +33,9 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
+//USER
+Route::get('/user', [\App\Http\Controllers\UserController::class, 'index'])->name('user.index');
+//USER
 
 Route::get('/note', [NoteController::class, 'index'])->name('note.index');
 Route::get('note/create', [NoteController::class, 'create'])->name('note.create');
@@ -52,12 +55,15 @@ Route::post('/login', [LoginUserController::class, 'store'])->name('login.store'
 Route::get('/logout', [LoginUserController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
-    // Route::middleware('isAdmin')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-    Route::get('/404', [DashboardController::class, 'notfound'])->name('dashboard.notfound');
-    Route::get('/dashboard/sendmesssage', [DashboardController::class, 'sendmesssage'])->name('dashboard.sendmesssage');
-    Route::resource('notice', \App\Http\Controllers\NoticeController::class);
-    // });
+    Route::middleware('isAdmin')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+        Route::get('/404', [DashboardController::class, 'notfound'])->name('dashboard.notfound');
+        Route::get('/dashboard/sendmesssage', [DashboardController::class, 'sendmesssage'])->name('dashboard.sendmesssage');
+        Route::resource('notice', \App\Http\Controllers\NoticeController::class);
+    });
+    Route::get('/database/user', function () {
+        return " user dashboatd";
+    })->name('auth.home');
 });
 
 Route::get('/notice/{id}', function ($id) {
