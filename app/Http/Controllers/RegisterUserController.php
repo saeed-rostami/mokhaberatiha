@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\City;
 use App\Models\Province;
 use App\Models\User;
+use App\Traits\EmailOTPTrait;
+use App\Traits\OTPTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
 class RegisterUserController extends Controller
 {
+    use EmailOTPTrait;
     public function register()
     {
         $provinces = Province::all();
@@ -45,8 +48,11 @@ class RegisterUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        auth()->login($user);
+//        send otp to email
 
-        return to_route('/');
+        $this->otpRequest($user);
+//        auth()->login($user);
+
+//        return to_route('/');
     }
 }

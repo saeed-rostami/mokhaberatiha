@@ -1,50 +1,34 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('website.layout')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('ایمیل')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+<link rel="stylesheet" href="{{ asset('login.css') }}">
+@section('content')
+    <div class="container-fluid">
+        <div class="col-6">
+            <form method="POST" action="{{ route('login.store') }}">
+                @csrf
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">آدرس ایمیل</label>
+                    <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                           placeholder="لطفا ایمیل خود را وارد کنید...">
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">گذرواژه</label>
+                    <input name="password" type="password" class="form-control" id="password"
+                           placeholder="لطفا پسورد خود را وارد کنید...">
+                </div>
+                <div class="col-auto">
+        <span id="passwordHelpInline" class="form-text">
+           <p class="text-black-50"> گذرواژه باید بین 8 الی 20 کاراکتر باشد.</p>
+          </span>
+                </div>
+                <!-- <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('پسورد')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('به یاد داشته باش') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('پسورد خود را فراموش کردید؟') }}
-                </a>
-            @endif
-                <span>&nbsp;</span>
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
-                    {{ __('ثبت نام') }}
-                </a>
-            <x-primary-button class="ms-3">
-                {{ __('ورود') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+    <br><br><br><br>
+@endsection

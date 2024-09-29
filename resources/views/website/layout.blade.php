@@ -15,95 +15,86 @@
 </head>
 
 <body>
+
 <div class="top-bar">
     <div class="container-fluid">
-        <div class="col-md-6">
-            <div class="">
-                <img style="width: 10%;" src="img/logo2.png" alt="logo">
-                <span style="margin-right: 20px; color:#070478; font-size: 16px">
-                        مخابراتی ها
-                    </span>
+        <div class="top-cat-box">
+            <div class="menu">
+                <img src="favicon/android-chrome-192x192.png" alt="">
+                <p>مخابراتی ها</p>
+
             </div>
-            {{-- <div class="search-btn">
-                <span><i class="fa fa-search"></i></span>
-            </div> --}}
+
+            <!-- <div class="col-md-3">
+               <div class="show-cat">
+                   <span>
+                       دسته ها
+                       <i class="fa fa-bars"></i>
+                   </span>
+               </div>
+               </div> -->
         </div>
-        <div class="col-md-6">
-            <div class="top-cat-box">
-                <div class="col-md-12">
-                    <div class="menu">
-                        <ul>
-                            <li>{{ verta() }}
-                            </li>
-                        </ul>
-                    </div>
+        <div class="log_reg_btn_parent">
+            @if(auth()->check())
+           <div>
+               خوش آمدید
+               {{auth()->user()->name}}
+
+             <form METHOD="post" action="{{ route('logout') }}">
+                 @csrf
+
+                 <button>
+                     <button type="submit" class="btn btn-primary">خروج</button>
+
+                 </button>
+             </form>
+           </div>
+            @else
+                <div class="log_reg_btn">
+                    <button class="btn"><li><a href="{{route('login')}}">ورود</a></li></button>
+                    <button class="btn"><li><a>ثبت نام</a></li></button>
+                    <p id="date" style="width:60%;direction: ltr;margin-top: 2vh;"></p>
+
                 </div>
-                <!-- <div class="col-md-3">
-                 <div class="show-cat">
-                     <span>
-                         دسته ها
-                         <i class="fa fa-bars"></i>
-                     </span>
-                 </div>
-                 </div> -->
-            </div>
+            @endif
         </div>
+
+
     </div>
 </div>
+
 <div class="main-header">
     <div class="container-fluid">
-        <div class="col-md-10">
+        <div class="col-md-7 col-sm-8">
             <div class="main-menu">
                 <ul>
                     <li><a href="#">اتاق خبر</a></li>
-                    <li><a href="#">انجمن ها</a></li>
-                    <li><a href="#">قوانین و بخشنامه ها</a></li>
-                    <li><a href="#">عضویت</a></li>
-                    <li><a href="#">تماس با ما</a></li>
+                    <!-- <li><a href="#">اقتصادی</a></li> -->
+                    <li><a href="#">انجمن</a></li>
+                    <li><a href="#">آرشیو تصاویر </a></li>
+                    <li><a href="#">قوانین و دستورالعمل ها</a></li>
                     <li><a href="#">درباره ما</a></li>
+                    <li><a href="#">تماس با ما</a></li>
                 </ul>
             </div>
         </div>
-        <div class="col-md-2">
-
-            <div class="social-box">
-                <ul>
-                    <li>
-                        @if (Route::has('login'))
-                            <nav class="-mx-3 flex flex-1 justify-end">
-                                @auth
-                                    <a href="{{ url('/dashboard') }}"
-                                       class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                        داشبورد
-                                    </a>
-                                @else
-                                    <a href="{{ route('login') }}"
-                                       class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                        ورود
-                                    </a>
-                                    ||
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('register') }}"
-                                           class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                            ثبت نام
-                                        </a>
-                                    @endif
-                                @endauth
-                            </nav>
-                        @endif
-                    </li>
-
-                </ul>
+        <div class="col-md-5 col-sm-4">
+            <div class="search-btn">
+                <input type="text" class="form-control" placeholder="جستجو...">
+                <span><i class="fa fa-search"></i></span>
             </div>
         </div>
+
     </div>
 </div>
+
 @yield('content')
+
 <div class="footer">
     <div class="container-fluid">
         <div class="col-md-5">
             <div class="footer-box">
-                <span class="title">مجله مخابراتی ها</span>
+                <span class="title">مجله seo90</span>
                 <p>متن ساختگی با تولید سادگی نامفهوم تولید سادگی از صنعت متن ساختگی با تولید سادگی نامفهوم تولید
                     سادگی از صنعت متن ساختگی با تولید سادگی نامفهوم تولید سادگی از صنعت متن ساختگی با تولید سادگی از
                     صنعت متن ساختگی با تولید سادگی نامفهوم تولید سادگی از صنعت متن ساختگی با تولید سادگی نامفهوم
@@ -140,25 +131,30 @@
         <div class="col-md-3">
             <div class="footer-box contact-box">
                 <span class="title">تماس با ما</span>
-                <p><i class="fa fa-phone"></i> 09332187732</p>
-                <p><i class="fa fa-phone"></i> 09118395667</p>
-                <p><i class="fa fa-envelope-o"></i> info@مخابراتی ها.ir</p>
-                <p><i class="fa fa-map-marker"></i> رشت </p>
+                <p><i class="fa fa-phone"></i> 09028468446</p>
+                <p><i class="fa fa-phone"></i> 09336636892</p>
+                <p><i class="fa fa-envelope-o"></i> info@seo90.ir</p>
+                <p><i class="fa fa-map-marker"></i> تبریز </p>
+                <div class="socialbox">
+                    <p><a href="#"><i class="fa fa-twitter"></i></a></p>
+                    <p><a href="#"><i class="fa fa-facebook"></i></a></p>
+                    <p><a href="#"><i class="fa fa-instagram"></i></a></p>
+                </div>
             </div>
         </div>
-        <div class="clear-fix"></div>
     </div>
 </div>
+<div class="clear-fix"></div>
 <div class="end-wrapper">
     <div class="container-fluid">
         <div class="col-md-6">
             <div class="copy-r">
-                <p>&copy; تمامی حقوق متعلق به مخابراتی ها می باشد</p>
+                <p>&copy; تمامی حقوق متعلق به بخت آزما می باشد</p>
             </div>
         </div>
         <div class="col-md-6">
             <div class="creator text-left">
-                <p>طراحی سایت: شرکت <a href="https://keytotec.com/">بخت آزما</a></p>
+                <p>طراحی سایت ، بخت آزما</p>
             </div>
         </div>
     </div>

@@ -22,7 +22,7 @@ class LoginUserController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return to_route('/');
+            return view('website.index');
         }
 
         return back()->withErrors([

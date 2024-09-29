@@ -1,103 +1,152 @@
 @extends('website.layout')
 
+
+
 @section('content')
+    <div class="hero container-fluid">
+        <img src="img/pexels-brett-sayles-2881232.jpg" alt="">
+    </div>
     <div class="clear-fix"></div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
                 <div class="top-sidebar-r">
-                    <span class="title">عکس</span>
-                    <a href="#">
-                        <div class="bx">
-                            <div class="col-md-6">
-                                <div class="img-box">
-                                    <figure>
-                                        <img src="img/696112501123546.jpg" alt="">
-                                        <figcaption><span>1</span></figcaption>
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="meta">
-                                    <h5>
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است. چاپگرها و...</h6>
-                                        <span><i class="fa fa-clock-o"></i> 99/3/20</span>
-                                        <div class="text-left">
-                                            <sub><i class="fa fa-comment"></i> 26</sub>
-                                        </div>
-                                </div>
+                    <span class="title">نظرسنجی</span>
+                    <!-- <a href="#"> -->
+                    <div class="bx">
+                        <h4>نظرسنجی درباره لورم ایپسوم رسانه  راهکارها باشد؟</h4>
+                        <hr>
+                        <div class="col-md-12">
+                            <div class="img-box">
+                                <figure class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="first">
+                                    <label class="form-check-label" for="first">
+                                        نظرسنجی در مورد لورم
+                                    </label>
+                                </figure>
                             </div>
                         </div>
-                    </a>
-                    <a href="#">
-                        <div class="bx">
-                            <div class="col-md-6">
-                                <div class="img-box">
-                                    <figure>
-                                        <img src="img/1733753707Capture.png" alt="">
-                                        <figcaption><span>2</span></figcaption>
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="col-md-6 ">
-                                <div class="meta">
-                                    <h5>
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                        گرافیک است. چاپگرها و... متن ارسال شده</h6>
-                                        <span><i class="fa fa-clock-o"></i> 99/3/20</span>
-                                        <div class="text-left">
-                                            <sub><i class="fa fa-comment"></i> 26</sub>
-                                        </div>
-                                </div>
+
+                        <div class="col-md-12">
+                            <div class="img-box">
+                                <figure class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="second">
+                                    <label class="form-check-label" for="second">
+                                        نظرسنجی در مورد لورم
+                                    </label>
+                                </figure>
                             </div>
                         </div>
-                    </a>
-                    <a href="#">
-                        <div class="bx">
-                            <div class="col-md-6">
-                                <div class="img-box">
-                                    <figure>
-                                        <img src="img/290667058azer news.jpg" alt="">
-                                        <figcaption><span>3</span></figcaption>
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="col-md-6 ">
-                                <div class="meta">
-                                    <h5>
-                                        عنوان برایلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                        از طراحان گرافیک است. چاپگرها و... شده</h6>
-                                        <span><i class="fa fa-clock-o"></i> 99/3/20</span>
-                                        <div class="text-left">
-                                            <sub><i class="fa fa-comment"></i> 26</sub>
-                                        </div>
-                                </div>
+
+
+                        <div class="col-md-12">
+                            <div class="img-box">
+                                <figure class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="third">
+                                    <label class="form-check-label" for="third">
+                                        نظرسنجی در مورد لورم
+                                    </label>
+                                </figure>
                             </div>
                         </div>
-                    </a>
-                    <a href="#">
-                        <div class="bx">
-                            <div class="col-md-6">
-                                <div class="img-box">
-                                    <figure>
-                                        <img src="img/parsitarh-1038x515.png" alt="">
-                                        <figcaption><span>4</span></figcaption>
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="col-md-6 ">
-                                <div class="meta">
-                                    <h5>
-                                        عنوان برای متن ارسال شده</h6>
-                                        <span><i class="fa fa-clock-o"></i> 99/3/20</span>
-                                        <div class="text-left">
-                                            <sub><i class="fa fa-comment"></i> 246</sub>
-                                        </div>
-                                </div>
+
+                        <div class="col-md-12">
+                            <div class="img-box">
+                                <figure class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="fourth">
+                                    <label class="form-check-label" for="fourth">
+                                        نظرسنجی در مورد لورم
+                                    </label>
+                                </figure>
                             </div>
                         </div>
+
+
+                        <!-- <div class="col-md-6">
+                           <div class="meta">
+                              <h5>
+                              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                              گرافیک است. چاپگرها و...</h6>
+                              <span><i class="fa fa-clock-o"></i> 99/3/20</span>
+                              <div class="text-left">
+                                 <sub><i class="fa fa-comment"></i> 26</sub>
+                              </div>
+                           </div>
+                        </div> -->
+                    </div>
+                    <!-- </a> -->
+                    <!-- <a href="#">
+                       <div class="bx">
+                          <div class="col-md-6">
+                             <div class="img-box">
+                                <figure>
+                                   <img src="img/1733753707Capture.png" alt="">
+                                   <figcaption><span>2</span></figcaption>
+                                </figure>
+                             </div>
+                          </div>
+                          <div class="col-md-6 ">
+                             <div class="meta">
+                                <h5>
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                گرافیک است. چاپگرها و... متن ارسال شده</h6>
+                                <span><i class="fa fa-clock-o"></i> 99/3/20</span>
+                                <div class="text-left">
+                                   <sub><i class="fa fa-comment"></i> 26</sub>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
                     </a>
+                    <a href="#">
+                       <div class="bx">
+                          <div class="col-md-6">
+                             <div class="img-box">
+                                <figure>
+                                   <img src="img/290667058azer news.jpg" alt="">
+                                   <figcaption><span>3</span></figcaption>
+                                </figure>
+                             </div>
+                          </div>
+                          <div class="col-md-6 ">
+                             <div class="meta">
+                                <h5>
+                                عنوان برایلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+                                از طراحان گرافیک است. چاپگرها و... شده</h6>
+                                <span><i class="fa fa-clock-o"></i> 99/3/20</span>
+                                <div class="text-left">
+                                   <sub><i class="fa fa-comment"></i> 26</sub>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </a>
+                    <a href="#">
+                       <div class="bx">
+                          <div class="col-md-6">
+                             <div class="img-box">
+                                <figure>
+                                   <img src="img/parsitarh-1038x515.png" alt="">
+                                   <figcaption><span>4</span></figcaption>
+                                </figure>
+                             </div>
+                          </div>
+                          <div class="col-md-6 ">
+                             <div class="meta">
+                                <h5>
+                                عنوان برای متن ارسال شده</h6>
+                                <span><i class="fa fa-clock-o"></i> 99/3/20</span>
+                                <div class="text-left">
+                                   <sub><i class="fa fa-comment"></i> 246</sub>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </a> -->
+                    <div class="comment_btn">
+                        <button class="btn"><p>ثبت نظر</p></button>
+                    </div>
+
                 </div>
             </div>
             <div class="col-md-6">
@@ -136,28 +185,72 @@
             </div>
             <div class="col-md-3">
                 <div class="top-sidebar-l">
-                    <span class="title">یادداشت</span>
-                    @if(is_null($notices))
-                        <span></span>
-                    @else
-                        @foreach($notices as $notice)
-                            <a href="{{ route('notice.page', $notice->id) }}">
-                                <div class="bx">
-                                    <div class="col-md-3 nopadding">
-                                        <span><i class="fa fa-heart"></i> 56</span>
-                                    </div>
-                                    <div class="col-md-8 nopadding">
-                                        <h3>
-                                            {{ $notice->title }}
-                                        </h3>
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
-
-                    @endif
-
-
+                    <span class="title">کامنت های پربازدید</span>
+                    <a href="#">
+                        <div class="bx">
+                            <div class="col-md-3 nopadding">
+                                <span><i class="fa fa-heart"></i> 56</span>
+                            </div>
+                            <div class="col-md-8 nopadding">
+                                <h3>رم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک
+                                    است. چاپگرها و متو
+                                </h3>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="bx">
+                            <div class="col-md-3 nopadding">
+                                <span><i class="fa fa-heart"></i> 78</span>
+                            </div>
+                            <div class="col-md-8 nopadding">
+                                <h3>رم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک
+                                    است. چاپگرها و متو
+                                </h3>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="bx">
+                            <div class="col-md-3 nopadding">
+                                <span><i class="fa fa-heart"></i> 321</span>
+                            </div>
+                            <div class="col-md-8 nopadding">
+                                <h3>رم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک
+                                    است. چاپگرها و متو
+                                </h3>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="bx">
+                            <div class="col-md-3 nopadding">
+                                <span><i class="fa fa-heart"></i> 56</span>
+                            </div>
+                            <div class="col-md-8 nopadding">
+                                <h3>رم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک
+                                    است. چاپگرها و متو
+                                </h3>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="bx">
+                            <div class="col-md-3 nopadding">
+                                <span><i class="fa fa-heart"></i> 56</span>
+                            </div>
+                            <div class="col-md-8 nopadding">
+                                <h3>رم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                    گرافیک
+                                    است. چاپگرها و متو
+                                </h3>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -259,7 +352,6 @@
                                             </p>
                                         </div>
                                 </div>
-
                                 </a>
                             </div>
                             <div class="col-md-4">
@@ -385,8 +477,7 @@
                                 <li><a href="#">و سه درصد می طلبد تا با نرم افزارها ش</a></li>
                                 <li><a href="#"> فارسی ایجاد کرد. در ارائه راهکارها</a></li>
                                 <li><a href="#"> اصلی و جوابگوی مورد استفاده قرار گیرد.</a></li>
-                                <li><a href="#">متن ساختگی با تولید سادگی نامفهوم متن ساختگی با تولید سادگی
-                                        نامفهوم
+                                <li><a href="#">متن ساختگی با تولید سادگی نامفهوم متن ساختگی با تولید سادگی نامفهوم
                                         استفاده استفاده</a>
                                 </li>
                                 <li><a href="#"> و سه درصد گذشته با نرم افزارها </a></li>
@@ -445,8 +536,7 @@
                                     نامفهوم تولید سادگی از صنعت
                                 </p>
                                 <div class="text-rigt">
-                                    <a href="#">ادامه ...</a>
-                                </div>
+                                    <a href="#">ادامه ...</a></div>
                             </div>
                         </a>
                     </div>
@@ -471,8 +561,7 @@
                                     نامفهوم تولید سادگی از صنعت
                                 </p>
                                 <div class="text-rigt">
-                                    <a href="#">ادامه ...</a>
-                                </div>
+                                    <a href="#">ادامه ...</a></div>
                             </div>
                         </a>
                     </div>
@@ -497,8 +586,7 @@
                                     نامفهوم تولید سادگی از صنعت
                                 </p>
                                 <div class="text-rigt">
-                                    <a href="#">ادامه ...</a>
-                                </div>
+                                    <a href="#">ادامه ...</a></div>
                             </div>
                         </a>
                     </div>
@@ -522,8 +610,7 @@
                                     نامفهوم تولید سادگی از صنعت
                                 </p>
                                 <div class="text-rigt">
-                                    <a href="#">ادامه ...</a>
-                                </div>
+                                    <a href="#">ادامه ...</a></div>
                             </div>
                         </a>
                     </div>
@@ -548,8 +635,7 @@
                                     نامفهوم تولید سادگی از صنعت
                                 </p>
                                 <div class="text-rigt">
-                                    <a href="#">ادامه ...</a>
-                                </div>
+                                    <a href="#">ادامه ...</a></div>
                             </div>
                         </a>
                     </div>
@@ -574,8 +660,7 @@
                                     نامفهوم تولید سادگی از صنعت
                                 </p>
                                 <div class="text-rigt">
-                                    <a href="#">ادامه ...</a>
-                                </div>
+                                    <a href="#">ادامه ...</a></div>
                             </div>
                         </a>
                     </div>
@@ -601,8 +686,7 @@
                                     نامفهوم تولید سادگی از صنعت
                                 </p>
                                 <div class="text-rigt">
-                                    <a href="#">ادامه ...</a>
-                                </div>
+                                    <a href="#">ادامه ...</a></div>
                             </div>
                         </a>
                     </div>
@@ -627,8 +711,7 @@
                                     نامفهوم تولید سادگی از صنعت
                                 </p>
                                 <div class="text-rigt">
-                                    <a href="#">ادامه ...</a>
-                                </div>
+                                    <a href="#">ادامه ...</a></div>
                             </div>
                         </a>
                     </div>
