@@ -22,7 +22,7 @@ class LoginUserController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return to_route('/');
         }
 
         return back()->withErrors([
@@ -32,6 +32,6 @@ class LoginUserController extends Controller
 
     public function logout(Request $request){
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }

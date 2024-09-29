@@ -24,50 +24,50 @@
         </div>
 
         <!-- province -->
-{{--        <div class="mt-4">--}}
+        <div class="mt-4">
 
-{{--            <x-input-label for="province" :value="__('استان')" />--}}
-{{--            <select style="padding-right: 35px" id="province" class="block mt-1 w-full" type="text" name="province"--}}
-{{--                :value="old('province')" required autofocus autocomplete="province">--}}
-{{--                <option class="form-control" value="">انتخاب استان</option>--}}
-{{--                @foreach ($provinces as $info)--}}
-{{--                    <option value="{{ $info['id'] }}">{{ $info['name'] }}</option>--}}
-{{--                @endforeach--}}
-{{--            </select>--}}
-{{--            --}}{{-- <x-text-input id="state" class="block mt-1 w-full" type="text" name="state" :value="old('state')"--}}
-{{--                required autofocus autocomplete="state" /> --}}
-{{--            <x-input-error :messages="$errors->get('state')" class="mt-2" />--}}
-{{--            --}}{{-- @error('name')--}}
-{{--                <span class="text-red-500 text-sm">{{ $message }}</span>--}}
-{{--            @enderror --}}
-{{--        </div>--}}
+            <x-input-label for="province" :value="__('استان')" />
+            <select style="padding-right: 35px" id="province" class="block mt-1 w-full" type="text" name="province"
+                :value="old('province')" required autofocus autocomplete="province">
+                <option class="form-control" value="">انتخاب استان</option>
+                @foreach ($provinces as $info)
+                    <option value="{{ $info['id'] }}">{{ $info['name'] }}</option>
+                @endforeach
+            </select>
+{{--             <x-text-input id="state" class="block mt-1 w-full" type="text" name="state" :value="old('state')"--}}
+{{--                required autofocus autocomplete="state" />--}}
+            <x-input-error :messages="$errors->get('state')" class="mt-2" />
+             @error('name')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
+        </div>
 
         <!-- city -->
-{{--        <div class="mt-4">--}}
+        <div class="mt-4">
 
-{{--            <x-input-label for="city" :value="__('شهر')" />--}}
-{{--            <select style="padding-right: 35px" id="city" class="block mt-1 w-full" type="text" name="city"--}}
-{{--                :value="old('city')" required autofocus autocomplete="city">--}}
-{{--                <option class="form-control" value="">انتخاب شهر</option>--}}
-{{--            </select>--}}
-{{--            --}}{{-- <x-text-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')"--}}
-{{--                required autofocus autocomplete="city" /> --}}
-{{--            <x-input-error :messages="$errors->get('city')" class="mt-2" />--}}
-{{--            --}}{{-- @error('name')--}}
-{{--                <span class="text-red-500 text-sm">{{ $message }}</span>--}}
-{{--            @enderror --}}
-{{--        </div>--}}
+            <x-input-label for="city" :value="__('شهر')" />
+            <select style="padding-right: 35px" id="city" class="block mt-1 w-full" type="text" name="city"
+                :value="old('city')" required autofocus autocomplete="city">
+                <option class="form-control" value="">انتخاب شهر</option>
+            </select>
+{{--             <x-text-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('city')"--}}
+{{--                required autofocus autocomplete="city" />--}}
+            <x-input-error :messages="$errors->get('city')" class="mt-2" />
+             @error('name')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
+        </div>
 
         <!-- position -->
-{{--        <div class="mt-4">--}}
-{{--            <x-input-label for="position" :value="__('پست سازمانی')" />--}}
-{{--            <x-text-input id="position" class="block mt-1 w-full" type="text" name="position" :value="old('position')"--}}
-{{--                required autofocus autocomplete="position" />--}}
-{{--            <x-input-error :messages="$errors->get('position')" class="mt-2" />--}}
-{{--            --}}{{-- @error('name')--}}
-{{--                <span class="text-red-500 text-sm">{{ $message }}</span>--}}
-{{--            @enderror --}}
-{{--        </div>--}}
+        <div class="mt-4">
+            <x-input-label for="position" :value="__('پست سازمانی')" />
+            <x-text-input id="position" class="block mt-1 w-full" type="text" name="position" :value="old('position')"
+                required autofocus autocomplete="position" />
+            <x-input-error :messages="$errors->get('position')" class="mt-2" />
+             @error('name')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
+        </div>
 
         <!-- Email Address -->
         <div class="mt-4">
@@ -81,15 +81,15 @@
         </div>
 
         <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="phone_number" :value="__('شماره همراه')" />
-            <input id="phone_number" class="block mt-1 w-full" type="tel" name="phone_number" :value="old('phone_number')"
-                          required autocomplete="phone_number" />
-            <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
-            {{-- @error('email')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
-            @enderror --}}
-        </div>
+{{--        <div class="mt-4">--}}
+{{--            <x-input-label for="phone_number" :value="__('شماره همراه')" />--}}
+{{--            <input id="phone_number" class="block mt-1 w-full" type="tel" name="phone_number" :value="old('phone_number')"--}}
+{{--                          required autocomplete="phone_number" />--}}
+{{--            <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />--}}
+{{--            --}}{{-- @error('email')--}}
+{{--                <span class="text-red-500 text-sm">{{ $message }}</span>--}}
+{{--            @enderror --}}
+{{--        </div>--}}
 
         <!-- Password -->
         <div class="mt-4">

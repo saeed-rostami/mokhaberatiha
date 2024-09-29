@@ -33,7 +33,7 @@
                 <div class="col-md-12">
                     <div class="menu">
                         <ul>
-                            <li>{{ now() }}
+                            <li>{{ verta() }}
                             </li>
                         </ul>
                     </div>
