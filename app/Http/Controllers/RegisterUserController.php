@@ -57,7 +57,7 @@ class RegisterUserController extends Controller
 //        sms the otp code
         $otp = $this->otpRequest($user);
 
-        return view('auth.register-code', compact('mobile'));
+        return view('auth.register-code', compact('mobile' , 'otp'));
 
 //        auth()->login($user);
 
