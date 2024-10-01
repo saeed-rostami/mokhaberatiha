@@ -3,19 +3,11 @@
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NoteController;
 use App\Http\Controllers\RegisterUserController;
-use App\Http\Controllers\DashboardController;
-
-
-
-use App\Models\Notice;
 
 Route::get('/', function () {
-    $notices = Notice::latest()->take(5)->get();
-    return view('website.index', compact('notices'));
-});
-
+    return view('website.index');
+})->name('website.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
@@ -31,42 +23,60 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
 
 //USER
 Route::get('/user', [\App\Http\Controllers\UserController::class, 'index'])->name('user.index');
 //USER
 
-Route::get('/note', [NoteController::class, 'index'])->name('note.index');
-Route::get('note/create', [NoteController::class, 'create'])->name('note.create');
-Route::post('/note', [NoteController::class, 'store'])->name('note.store');
-Route::get('note/{id}', [NoteController::class, 'show'])->name('note.show');
-Route::get('note/{id}/edit', [NoteController::class, 'edit'])->name('note.edit');
-Route::put('/note/{id}', [NoteController::class, 'update'])->name('note.update');
-Route::delete('note/{id}', [NoteController::class, 'delete'])->name('note.destroy');
 
-// Route::resource('note', NoteController::class);
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [RegisterUserController::class, 'register'])->name('register')
+        ->middleware('guest');
+    Route::get('/get_city/{id}', [RegisterUserController::class, 'cities'])->name('register.cities');
+    Route::post('/register', [RegisterUserController::class, 'store'])->name('register.store');
+    Route::get('/login', [LoginUserController::class, 'login'])->name('login');
+    Route::post('/login', [LoginUserController::class, 'store'])->name('login.store');
 
-Route::get('/register', [RegisterUserController::class, 'register'])->name('register');
-Route::get('/get_city/{id}', [RegisterUserController::class, 'cities'])->name('register.cities');
-Route::post('/register', [RegisterUserController::class, 'store'])->name('register.store');
-Route::get('/login', [LoginUserController::class, 'login'])->name('login');
-Route::post('/login', [LoginUserController::class, 'store'])->name('login.store');
+    Route::post('/mobile-verification', [RegisterUserController::class, 'mobileVerification'])->name('mobile.verification');
+});
 Route::get('/logout', [LoginUserController::class, 'logout'])->name('logout');
 
-Route::middleware('auth')->group(function () {
-    Route::middleware('isAdmin')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-        Route::get('/404', [DashboardController::class, 'notfound'])->name('dashboard.notfound');
-        Route::get('/dashboard/sendmesssage', [DashboardController::class, 'sendmesssage'])->name('dashboard.sendmesssage');
-        Route::resource('notice', \App\Http\Controllers\NoticeController::class);
-    });
-    Route::get('/database/user', function () {
-        return " user dashboatd";
-    })->name('auth.home');
-});
+//Route::middleware('')->group(function () {
+//    Route::middleware('isAdmin')->group(function () {
+//        Route::get("/post", [\App\Http\Controllers\Admin\PostController::class, 'store'])
+//            ->name('post.store');
+//    });
+//});
 
-Route::get('/notice/{id}', function ($id) {
-    $notice = Notice::find($id);
-    return view('website.notice', compact('notice'));
-})->name('notice.page');
+Route::prefix('admin')
+    ->middleware('auth')
+    ->group(function () {
+        Route::middleware('isAdmin')->group(function () {
+
+//            POST
+            Route::prefix('post')->group(function () {
+                Route::get("/index", [\App\Http\Controllers\Admin\PostController::class, 'index'])
+                    ->name('post.index');
+
+                Route::get("/show/{post_id}", [\App\Http\Controllers\Admin\PostController::class, 'show'])
+                    ->name('post.show');
+
+
+                Route::get("/create", [\App\Http\Controllers\Admin\PostController::class, 'create'])
+                    ->name('post.create');
+
+                Route::post("/store", [\App\Http\Controllers\Admin\PostController::class, 'store'])
+                    ->name('post.store');
+
+                Route::get("/edit/{post_id}", [\App\Http\Controllers\Admin\PostController::class, 'edit'])
+                    ->name('post.edit');
+
+                Route::put("/update/{post_id}", [\App\Http\Controllers\Admin\PostController::class, 'update'])
+                    ->name('post.update');
+
+                //            POST END
+            });
+        });
+    }
+
+    );

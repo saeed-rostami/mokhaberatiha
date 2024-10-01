@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'User',
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin123'),
-            'phone_number' => '09332187732',
+            'mobile' => '09332187732',
             'is_admin' => 1
         ]);
 
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'User',
             'email' => 'user@user.com',
             'password' => bcrypt('user123'),
-            'phone_number' => '09118395667',
+            'mobile' => '09118395667',
             'is_admin' => 0
         ]);
 

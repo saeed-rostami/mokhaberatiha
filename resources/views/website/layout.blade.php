@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css')  }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.css') }}">
+    <link rel="stylesheet" href="{{ asset('register-code.css') }}">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('favicon/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon/favicon-32x32.png')}}">
@@ -35,12 +36,12 @@
                </div> -->
         </div>
         <div class="log_reg_btn_parent">
-            @if(auth()->check())
+            @auth()
            <div>
                خوش آمدید
                {{auth()->user()->name}}
 
-             <form METHOD="post" action="{{ route('logout') }}">
+             <form METHOD="get" action="{{ route('logout') }}">
                  @csrf
 
                  <button>
@@ -49,14 +50,15 @@
                  </button>
              </form>
            </div>
-            @else
+            @endauth
+            @guest()
                 <div class="log_reg_btn">
                     <button class="btn"><li><a href="{{route('login')}}">ورود</a></li></button>
-                    <button class="btn"><li><a>ثبت نام</a></li></button>
+                    <button class="btn"><li><a href="{{route('register')}}">ثبت نام</a></li></button>
                     <p id="date" style="width:60%;direction: ltr;margin-top: 2vh;"></p>
 
                 </div>
-            @endif
+                @endguest
         </div>
 
 
@@ -164,6 +166,7 @@
 <script src="js/bootstrap.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/index.js"></script>
+@stack('scripts')
 </body>
 
 </html>

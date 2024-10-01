@@ -255,7 +255,7 @@ li:focus {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	
+
 }
 .log_reg_btn button{
 	width:50%;
@@ -464,7 +464,7 @@ li:focus {
 }
 /* .top-sidebar-r .bx:hover{
 	box-shadow: 1px 1px 8px -5px black;
-	
+
 } */
 .top-sidebar-r a {
 	color: #070478;
@@ -1485,8 +1485,8 @@ body > div.main-header > div > div.col-md-10 > div > ul > li > a:hover  {
 		margin:1.5vh -10%;
 	}
 
-} 
-	
+}
+
 @media screen and (min-width:768px) and (max-width:992px){
 	.menu{
 		width: 40%;

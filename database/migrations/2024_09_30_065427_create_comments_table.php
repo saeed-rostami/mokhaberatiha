@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('o_t_p_s', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
+                ->nullable()
                 ->references('id')
                 ->on('users')
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
-            $table->string( 'mobile' , 15 )->nullable();
-            $table->string( 'email'  )->nullable();
-            $table->string('otp')->nullable();
-            $table->timestamp( 'otp_expire_at' )->nullable();
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
 
+            $table->morphs('item');
+            $table->boolean('is_confirmed')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('o_t_p_s');
+        Schema::dropIfExists('comments');
     }
 };

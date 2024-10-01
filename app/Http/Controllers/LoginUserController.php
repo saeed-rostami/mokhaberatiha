@@ -19,14 +19,16 @@ class LoginUserController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $remember = (bool)$request->remember;
+
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
-            return view('website.index');
+            return redirect('/');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'ایمیل یا رمز عبور صحیح نیست.',
         ])->onlyInput('email');
     }
 
