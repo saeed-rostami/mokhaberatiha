@@ -14,8 +14,8 @@
             </div>
         @endif
 
-        <h2 class="text-indigo-600"> {{ $otp->otp }}</h2>
-        <form method="post"  class="d-flex justify-content-center" action="{{ route('mobile.verification') }}">
+        <h2 class="text-indigo-600"> {{ $code }}</h2>
+        <form method="post"  class="d-flex justify-content-center" action="{{ route('mobile.otpVerification') }}">
             @csrf
             <input name="mobile" type="hidden" value="{{ $mobile }}">
             <div style="direction: ltr;">

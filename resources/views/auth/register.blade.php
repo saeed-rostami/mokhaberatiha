@@ -18,11 +18,11 @@
             action="{{ route('register.store') }}"
             >
                 @csrf
-                <div class="mb-3">
-                    <label for="mobile" class="form-label">شماره تلفن</label>
-                    <input name="mobile" type="mobile" class="form-control" id="mobile" aria-describedby="phoneHelp" placeholder="لطفا شماره تلفن خود را وارد کنید...">
-                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-                </div>
+{{--                <div class="mb-3">--}}
+{{--                    <label for="mobile" class="form-label">شماره تلفن</label>--}}
+{{--                    <input name="mobile" type="mobile" class="form-control" id="mobile" aria-describedby="phoneHelp" placeholder="لطفا شماره تلفن خود را وارد کنید...">--}}
+{{--                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->--}}
+{{--                </div>--}}
 
 
                 <div class="mb-3">

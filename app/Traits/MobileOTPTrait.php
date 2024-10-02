@@ -32,7 +32,7 @@ trait MobileOTPTrait
             $otp = $this->regenerateOtp($otp);
 
         } else {
-//            $user = $this->createUser();
+            $user = $this->createUser();
 
             $otp = $this->createOtpRelation($user->id, $user->email, $user->mobile);
         }

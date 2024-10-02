@@ -54,7 +54,7 @@
             @guest()
                 <div class="log_reg_btn">
                     <button class="btn"><li><a href="{{route('login')}}">ورود</a></li></button>
-                    <button class="btn"><li><a href="{{route('register')}}">ثبت نام</a></li></button>
+                    <button class="btn"><li><a href="{{route('mobile.otpForm')}}">ثبت نام</a></li></button>
                     <p id="date" style="width:60%;direction: ltr;margin-top: 2vh;"></p>
 
                 </div>

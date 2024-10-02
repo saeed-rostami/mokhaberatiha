@@ -19,6 +19,7 @@ class LoginUserController extends Controller
             'password' => ['required'],
         ]);
 
+//        TODO IF FIND THE USER AND THE MOBILE IS NOT VERIFIED MUST RETURN TO VERIFY MOBILE (OF COURSE MUST SENT OTP TO MOBILE)
         $remember = (bool)$request->remember;
 
         if (Auth::attempt($credentials, $remember)) {
@@ -32,7 +33,8 @@ class LoginUserController extends Controller
         ])->onlyInput('email');
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
         return redirect('/');
     }

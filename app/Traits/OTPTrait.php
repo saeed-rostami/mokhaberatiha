@@ -27,15 +27,22 @@ trait OTPTrait
         return false;
     }
 
-    public function otpRequest($user): OTP
+    public function otpRequest($mobile): OTP
     {
-        if ($otp = $this->findUserByMobile($user->mobile)) {
+        if ($otp = $this->findUserByMobile($mobile)) {
             $otp = $this->regenerateOtp($otp);
         } else {
-            $otp = $this->createOtpRelation($user->id, $user->email, $user->mobile);
+            $user = $this->createUser($mobile);
+
+            $otp = $this->createOtpRelation($user->id, $user->mobile);
         }
 
         return $otp;
+    }
+
+    public function createUser($mobile)
+    {
+        return User::create(['mobile' => $mobile]);
     }
 
     public function regenerateOtp(OTP $otp): OTP
@@ -73,11 +80,11 @@ trait OTPTrait
         return OTP::query()->where('mobile', $mobile)->first();
     }
 
-    public function createOtpRelation($user_id, $email, $mobile)
+    public function createOtpRelation($user_id, $mobile)
     {
         return OTP::create([
             'user_id' => $user_id,
-            'email' => $email,
+            'email' => null,
             'mobile' => $mobile,
             'otp' => $this->generateCode(),
 //            'type' => $type,

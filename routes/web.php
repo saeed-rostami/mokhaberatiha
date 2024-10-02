@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -17,29 +18,51 @@ Route::get('/dashboard', function () {
 //     return view('dashboard.index');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-
-//USER
-Route::get('/user', [\App\Http\Controllers\UserController::class, 'index'])->name('user.index');
-//USER
+//Route::middleware('auth')->group(function () {
+//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//});
 
 
 Route::middleware('guest')->group(function () {
-    Route::get('/register', [RegisterUserController::class, 'register'])->name('register')
-        ->middleware('guest');
-    Route::get('/get_city/{id}', [RegisterUserController::class, 'cities'])->name('register.cities');
-    Route::post('/register', [RegisterUserController::class, 'store'])->name('register.store');
-    Route::get('/login', [LoginUserController::class, 'login'])->name('login');
-    Route::post('/login', [LoginUserController::class, 'store'])->name('login.store');
+//    Route::get('/register', [AuthController::class, 'register'])->name('register')
+//        ->middleware('guest');
+//    Route::get('/get_city/{id}', [AuthController::class, 'cities'])->name('register.cities');
+    Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.store');
 
-    Route::post('/mobile-verification', [RegisterUserController::class, 'mobileVerification'])->name('mobile.verification');
+    Route::get('/otp-request', [AuthController::class, 'otpForm'])
+        ->name('mobile.otpForm');
+
+    Route::post('/otp-request', [AuthController::class, 'sendOtp'])
+        ->name('mobile.sendOtp');
+
+    Route::post('/otp-verification', [AuthController::class, 'otpVerification'])
+        ->name('mobile.otpVerification');
 });
-Route::get('/logout', [LoginUserController::class, 'logout'])->name('logout');
+
+Route::middleware('auth:web')->group(function () {
+    Route::get('/register', [AuthController::class, 'registerForm'])
+        ->name('register.form');
+
+    Route::post('/register', [AuthController::class, 'registerRequest'])->name('register.store');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+
+//POST
+Route::get('/post-single/{post_id}', [\App\Http\Controllers\PostController::class , 'single'])
+    ->name('post.single');
+//END POST
+
+
+//COMMENT
+Route::post('/post-single', [\App\Http\Controllers\CommentController::class , 'store'])
+    ->name('comment.store');
+//END COMMENT
+
+
 
 //Route::middleware('')->group(function () {
 //    Route::middleware('isAdmin')->group(function () {
