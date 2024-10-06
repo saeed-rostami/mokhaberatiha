@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\ProfileController;
+use App\Models\City;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterUserController;
 
@@ -13,6 +14,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->name('dashboard');
+
+Route::get('/get_city/{id}', [AuthController::class , 'getCity']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard.index');
@@ -96,9 +99,28 @@ Route::prefix('admin')
 
                 Route::put("/update/{post_id}", [\App\Http\Controllers\Admin\PostController::class, 'update'])
                     ->name('post.update');
-
-                //            POST END
             });
+            //            POST END
+
+//            SETTINGS
+            Route::prefix('settings')->group(function () {
+                Route::get('/', [\App\Http\Controllers\Admin\SettingsController::class, 'index'])
+                    ->name('settings.index');
+
+                Route::get('/create', [\App\Http\Controllers\Admin\SettingsController::class, 'create'])
+                    ->name('settings.create');
+
+                Route::post('/store', [\App\Http\Controllers\Admin\SettingsController::class, 'store'])
+                    ->name('settings.store');
+
+                Route::get('/edit', [\App\Http\Controllers\Admin\SettingsController::class, 'edit'])
+                    ->name('settings.edit');
+
+                Route::post('/update', [\App\Http\Controllers\Admin\SettingsController::class, 'update'])
+                    ->name('settings.update');
+            });
+//            SETTINGS END
+
         });
     }
 

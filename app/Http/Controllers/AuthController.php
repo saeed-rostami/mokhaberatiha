@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Province;
 use App\Rules\MobileRule;
 use App\Traits\OTPTrait;
@@ -23,32 +24,32 @@ class AuthController extends Controller
     {
         $mobile = $this->normalizePhoneNumber($request->mobile);
         $request->merge([
-           'mobile' => $mobile
+            'mobile' => $mobile
         ]);
         $request->validate([
-            'mobile' => ['required' , new MobileRule()],
+            'mobile' => ['required', new MobileRule()],
         ]);
 
         $otp = $this->otpRequest($mobile);
         $code = $otp->otp;
 //        TODO SEND THE OTP CODE
 
-        return view('auth.otp-code-verification', compact('mobile' , 'code'));
+        return view('auth.otp-code-verification', compact('mobile', 'code'));
     }
 
     public function otpVerification(Request $request)
     {
 
         $request->validate([
-            'num_1' => ['required' , 'string' , 'min:1' , 'max:1'],
-            'num_2' => ['required' , 'string' , 'min:1' , 'max:1'],
-            'num_3' => ['required' , 'string' , 'min:1' , 'max:1'],
-            'num_4' => ['required' , 'string' , 'min:1' , 'max:1'],
+            'num_1' => ['required', 'string', 'min:1', 'max:1'],
+            'num_2' => ['required', 'string', 'min:1', 'max:1'],
+            'num_3' => ['required', 'string', 'min:1', 'max:1'],
+            'num_4' => ['required', 'string', 'min:1', 'max:1'],
         ]);
-        $num_1 = $request->num_1 ;
-        $num_2 = $request->num_2 ;
-        $num_3 = $request->num_3 ;
-        $num_4 = $request->num_4 ;
+        $num_1 = $request->num_1;
+        $num_2 = $request->num_2;
+        $num_3 = $request->num_3;
+        $num_4 = $request->num_4;
 
         $code = $num_1 . $num_2 . $num_3 . $num_4;
 //        verify code and verified mobile at
@@ -62,7 +63,7 @@ class AuthController extends Controller
             }
 
             Auth::user()->update([
-               'mobile_verified_at' => Carbon::now()
+                'mobile_verified_at' => Carbon::now()
             ]);
 
             return redirect('register');
@@ -76,20 +77,26 @@ class AuthController extends Controller
     public function registerRequest(Request $request)
     {
         $request->validate([
-//            'name' => ['required', 'max:255', 'min:1', 'string'],
-//            'last_name' => ['required', 'max:255', 'min:1', 'string'],
+            'username' => ['required', 'unique:users,username'],
+            'first_name' => ['required', 'max:255', 'min:2', 'string'],
+            'last_name' => ['required', 'max:255', 'min:2', 'string'],
+            'address' => ['required', 'max:255', 'min:8', 'string'],
             'email' => 'required|email|unique:users,email',
 //            'mobile' => ['required', 'unique:users,mobile', new MobileRule()],
 //            'position' => 'required|string|max:128',
-//            'city' => ['required', 'exists:cities,id'],
+            'city' => ['required', 'exists:cities,id'],
             'password' => ['required', 'min:8', 'confirmed'],
             'password_confirmation' => ['required', 'min:8'],
         ]);
 
         $user = Auth::user();
         $user->update([
+            'username' => $request->username,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'email' => $request->email,
             'city_id' => $request->city,
+            'address' => $request->address,
             'password' => Hash::make($request->password),
         ]);
 
@@ -112,23 +119,28 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $mobile = $this->normalizePhoneNumber($request->mobile);
+        $request->merge([
+            'mobile' => $mobile
+        ]);
+
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'mobile' => ['required', 'exists:users,mobile', new MobileRule()],
             'password' => ['required'],
         ]);
 
-//        TODO IF FIND THE USER AND THE MOBILE IS NOT VERIFIED MUST RETURN TO VERIFY MOBILE (OF COURSE MUST SENT OTP TO MOBILE)
         $remember = (bool)$request->remember;
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
+
             return redirect('/');
         }
 
         return back()->withErrors([
-            'email' => 'ایمیل یا رمز عبور صحیح نیست.',
-        ])->onlyInput('email');
+            'email' => 'شماره همراه یا رمز عبور صحیح نیست.',
+        ])->onlyInput('mobile');
     }
 
     public function logout()
@@ -136,5 +148,10 @@ class AuthController extends Controller
         Auth::logout();
 
         return redirect('/');
+    }
+
+    public function getCity($id)
+    {
+        return City::query()->where('province_id', $id)->get();
     }
 }

@@ -1,18 +1,11 @@
-@extends('website.layout')
+@extends('website.layout' , ['title' => 'تایید کد'])
 
 
 @section('content')
     <div class="container main-container">
         <h1>لطفا کد ارسال شده را وارد کنید...</h1>
-        @if ( $errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include( 'components.errors' )
+
 
         <h2 class="text-indigo-600"> {{ $code }}</h2>
         <form method="post"  class="d-flex justify-content-center" action="{{ route('mobile.otpVerification') }}">

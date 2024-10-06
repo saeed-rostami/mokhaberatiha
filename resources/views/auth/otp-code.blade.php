@@ -1,17 +1,9 @@
-@extends('website.layout')
-
+@extends('website.layout' , ['title' => 'ثبت نام'])
+<link rel="stylesheet" href="{{ asset('login.css') }}">
 
 @section('content')
     <div class="container">
-        @if ( $errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        @include( 'components.errors' )
         <form method="post" action="{{ route('mobile.sendOtp') }}" id="phone-get-form">
             @csrf
             <label class="form-label">
