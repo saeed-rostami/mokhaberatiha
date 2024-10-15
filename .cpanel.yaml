@@ -1,0 +1,4 @@
+deployment:
+  type: git
+  repo: https://github.com/saeed-rostami/mokhaberatiha.git
+  branch: main
