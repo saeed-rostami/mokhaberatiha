@@ -1,9 +1,7 @@
-@extends('website.layout')
+@extends('website.layout' , ['banner' => true])
+
 
 @section('content')
-    <div class="hero container-fluid">
-        <img src="img/pexels-brett-sayles-2881232.jpg" alt="">
-    </div>
     <div class="clear-fix"></div>
     <div class="container-fluid">
         <div class="row">

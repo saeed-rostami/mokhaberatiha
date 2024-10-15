@@ -39,12 +39,12 @@
         <div class="col-md-3">
             <div class="footer-box contact-box">
                 <span class="title">تماس با ما</span>
-                <p><i class="fa fa-phone"></i> 09028468446</p>
-                <p><i class="fa fa-phone"></i> 09336636892</p>
-                <p><i class="fa fa-envelope-o"></i> info@seo90.ir</p>
-                <p><i class="fa fa-map-marker"></i> تبریز </p>
+                <p><i class="fa fa-phone"></i> 09389983373</p>
+                <p><i class="fa fa-phone"></i> 09389983373</p>
+                <p><i class="fa fa-envelope-o"></i> Mokhaberatiha.ir@</p>
+                <p><i class="fa fa-map-marker"></i> گیلان </p>
                 <div class="socialbox">
-                    <p><a href="#"><i class="fa fa-twitter"></i></a></p>
+                    <p><a href="#"><i class="fa-brands fa-x-twitter"></i></a></p>
                     <p><a href="#"><i class="fa fa-facebook"></i></a></p>
                     <p><a href="#"><i class="fa fa-instagram"></i></a></p>
                 </div>

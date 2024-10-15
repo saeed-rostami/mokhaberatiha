@@ -1,6 +1,6 @@
 @extends('website.layout' , ['title' => 'ورود'])
 
-<link rel="stylesheet" href="{{ asset('login.css') }}">
+{{--<link rel="stylesheet" href="{{ asset('login.css') }}">--}}
 
 @section('content')
     <div class="container-fluid">

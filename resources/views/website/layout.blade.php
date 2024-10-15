@@ -20,6 +20,7 @@
 
 @include( 'components.top_bar' )
 
+@includeWhen( $banner ?? false, 'components.banner' ,['banner' => 'true'])
 
 @include( 'components.main_header' )
 

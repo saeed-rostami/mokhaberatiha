@@ -17,7 +17,7 @@ class MobileRule implements ValidationRule
         $re = '/^(989|09|9|0989)[0-9]{9}$/';
         if (! preg_match( $re , $value , $matches , PREG_OFFSET_CAPTURE , 0 ) or !is_numeric( $value ) )
         {
-            $fail('موبایل را درست وارد کنید');
+            $fail('شماره همراه را صحیح وارد کنید');
 
         }
     }

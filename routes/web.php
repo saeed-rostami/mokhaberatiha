@@ -1,15 +1,13 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\LoginUserController;
-use App\Http\Controllers\ProfileController;
-use App\Models\City;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterUserController;
 
 Route::get('/', function () {
     return view('website.index');
 })->name('website.index');
+
+Route::get('/news',[\App\Http\Controllers\HomeController::class, 'news'])->name('website.news');
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');

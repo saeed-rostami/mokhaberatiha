@@ -77,13 +77,13 @@ class AuthController extends Controller
     public function registerRequest(Request $request)
     {
         $request->validate([
-            'username' => ['required', 'unique:users,username'],
-            'first_name' => ['required', 'max:255', 'min:2', 'string'],
-            'last_name' => ['required', 'max:255', 'min:2', 'string'],
-            'address' => ['required', 'max:255', 'min:8', 'string'],
+//            'username' => ['required', 'unique:users,username'],
+//            'first_name' => ['required', 'max:255', 'min:2', 'string'],
+//            'last_name' => ['required', 'max:255', 'min:2', 'string'],
+//            'address' => ['required', 'max:255', 'min:8', 'string'],
             'email' => 'required|email|unique:users,email',
 //            'mobile' => ['required', 'unique:users,mobile', new MobileRule()],
-//            'position' => 'required|string|max:128',
+            'job_position' => 'required|string|max:128',
             'city' => ['required', 'exists:cities,id'],
             'password' => ['required', 'min:8', 'confirmed'],
             'password_confirmation' => ['required', 'min:8'],
@@ -91,12 +91,12 @@ class AuthController extends Controller
 
         $user = Auth::user();
         $user->update([
-            'username' => $request->username,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
+//            'username' => $request->username,
+//            'first_name' => $request->first_name,
+//            'last_name' => $request->last_name,
             'email' => $request->email,
             'city_id' => $request->city,
-            'address' => $request->address,
+            'job_position' => $request->job_position,
             'password' => Hash::make($request->password),
         ]);
 

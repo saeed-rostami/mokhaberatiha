@@ -1,5 +1,5 @@
 @extends('website.layout' , ['title' => 'ثبت نام'])
-<link rel="stylesheet" href="{{ asset('login.css') }}">
+{{--<link rel="stylesheet" href="{{ asset('login.css') }}">--}}
 
 @section('content')
     <div class="container">

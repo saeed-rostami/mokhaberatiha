@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamp('mobile_verified_at')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->string('password')->nullable();
-            $table->string('position')->nullable();
+            $table->string('job_position')->nullable();
             $table->text('address')->nullable();
             $table->rememberToken();
             $table->timestamps();

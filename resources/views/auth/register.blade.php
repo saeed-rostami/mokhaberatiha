@@ -1,5 +1,5 @@
 @extends('website.layout' , ['title' => 'تکمیل اطلاعات'])
-<link rel="stylesheet" href="{{ asset('login.css') }}">
+{{--<link rel="stylesheet" href="{{ asset('login.css') }}">--}}
 
 @section('content')
     <div class="container-fluid">
@@ -10,26 +10,26 @@
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">نام کاربری</label>
-                    <input name="username" type="username" class="form-control" id="exampleInputUser" aria-describedby="userHelp"
-                           placeholder="لطفا نام کاربری خود را وارد کنید..." required>
+                    <input disabled name="" type="" class="form-control" id="exampleInputUser" aria-describedby="userHelp"
+                           placeholder="{{ auth()->user()->mobile }}" required>
                     <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                 </div>
 
-                <div class="name-parent">
-                    <div class="mb-3" style="width: 45%;">
-                        <label for="first_name" class="form-label">نام کوچک</label>
-                        <input name="first_name" type="first_name" class="form-control" id="exampleInputUser" aria-describedby="userHelp"
-                               placeholder="لطفا نام خود را وارد کنید..." required>
-                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-                    </div>
+{{--                <div class="name-parent">--}}
+{{--                    <div class="mb-3" style="width: 45%;">--}}
+{{--                        <label for="first_name" class="form-label">نام کوچک</label>--}}
+{{--                        <input name="first_name" type="first_name" class="form-control" id="exampleInputUser" aria-describedby="userHelp"--}}
+{{--                               placeholder="لطفا نام خود را وارد کنید..." required>--}}
+{{--                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->--}}
+{{--                    </div>--}}
 
-                    <div class="mb-3" style="width: 47%;">
-                        <label for="last_name" class="form-label">نام خانوادگی</label>
-                        <input name="last_name" type="last_name" class="form-control" id="exampleInputUser" aria-describedby="userHelp"
-                               placeholder="لطفا نام خانوادگی خود را وارد کنید..." required>
-                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-                    </div>
-                </div>
+{{--                    <div class="mb-3" style="width: 47%;">--}}
+{{--                        <label for="last_name" class="form-label">نام خانوادگی</label>--}}
+{{--                        <input name="last_name" type="last_name" class="form-control" id="exampleInputUser" aria-describedby="userHelp"--}}
+{{--                               placeholder="لطفا نام خانوادگی خود را وارد کنید..." required>--}}
+{{--                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
 
                 <div class="mb-3">
@@ -68,10 +68,16 @@
                 </div>
 
 
+{{--                <div class="mb-3">--}}
+{{--                    <label for="address" class="form-label">آدرس</label>--}}
+{{--                    <input name="address" type="text" class="form-control" id="exampleInputUser" aria-describedby="userHelp"--}}
+{{--                           placeholder="لطفا آدرس خود را وارد کنید..." required>--}}
+{{--                </div>--}}
+
                 <div class="mb-3">
-                    <label for="address" class="form-label">آدرس</label>
-                    <input name="address" type="text" class="form-control" id="exampleInputUser" aria-describedby="userHelp"
-                           placeholder="لطفا آدرس خود را وارد کنید..." required>
+                    <label for="job_position" class="form-label">موقعیت شغلی</label>
+                    <input name="job_position" type="text" class="form-control" id="exampleInputUser" aria-describedby="userHelp"
+                           placeholder="لطفا موقعیت شغلی را وارد کنید..." required>
                 </div>
 
                 <div class="mb-3">

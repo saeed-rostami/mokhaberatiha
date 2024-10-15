@@ -1829,3 +1829,280 @@ body > div.main-header > div > div.col-md-10 > div > ul > li > a:hover  {
     display: flex;
     justify-content: space-between;
 }
+
+
+.news-card .post-box{
+    background: linear-gradient(90deg, #c8c8c8, white);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 12s ease infinite;
+    -moz-animation: AnimationName 12s ease infinite;
+    -o-animation: AnimationName 12s ease infinite;
+    animation: AnimationName 12s ease infinite;
+}
+
+
+
+
+
+
+
+.news-parent h1{
+    font-size:32px !important;
+    color: #000;
+}
+
+.news-card .post-box{
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px;
+    margin: 15px 0;
+    box-shadow: 1px 1px 8px -2px gray;
+
+}
+.news-card .post-box figure {
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+    border-radius: 3px;
+    box-shadow: 0 0 26px #e0dede;
+}
+.news-card .post-box figure img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    opacity: 80%;
+}
+
+.news-card .post-box figure figcaption.meta-fig {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: #aba7a7;
+    background: linear-gradient(0deg, #232222b0, transparent);
+}
+
+.news-card .post-box figure figcaption.view {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    color: #aba7a7;
+    background: transparent;
+    padding: 8px;
+}
+
+.news-card .post-box figure figcaption.view span {
+    display: inline-block;
+    padding: 3px;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 10px;
+    margin: 3px;
+    background-color: #ffffff52;
+    font-size: 12px;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+}
+
+.news-card .post-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 0px 8px black;
+    transition: all 0.3s ease;
+
+
+}
+
+.news-card .post-box:hover .view span{
+    background-color: #070478a3;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+}
+
+.news-card .post-box .text-p {
+    padding: 10px;
+}
+
+.news-card .post-box .text-p h5 {
+    overflow: hidden;
+    height: 40px;
+    color: #000;
+}
+
+.news-card .post-box .text-p p {
+    overflow: hidden;
+    height: 80px;
+    line-height: 2;
+    color: #353535;
+    font-size: 13px;
+    text-align: justify;
+}
+
+.news-card .blog-title-span {
+    display: block;
+    text-align: center;
+}
+
+.news-card .blog-title-span span {
+    display: block;
+    padding: 15px 0;
+    position: relative;
+    font-size: 16px;
+    padding-top: 5px;
+    color: #000;
+}
+
+.news-card .blog-title-span span:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 20px;
+    height: 3px;
+    background-color: #070478;
+    border-radius: 50%;
+}
+
+/* cards 4 */
+
+.news-card-2-parent{
+    display: flex;
+    justify-content: space-between;
+    padding: 2vh;
+}
+.news-card-2 .post-box{
+    width: 100%;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px;
+    margin: 15px 0;
+    box-shadow: 1px 1px 8px -2px gray;
+
+}
+.news-card-2 .post-box figure {
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+    border-radius: 3px;
+    box-shadow: 0 0 26px #e0dede;
+}
+.news-card-2 .post-box figure img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    opacity: 80%;
+}
+
+.news-card-2 .post-box figure figcaption.meta-fig {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: #aba7a7;
+    background: linear-gradient(0deg, #232222b0, transparent);
+}
+
+.news-card-2 .post-box figure figcaption.view {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    color: #aba7a7;
+    background: transparent;
+    padding: 8px;
+}
+
+.news-card-2 .post-box figure figcaption.view span {
+    display: inline-block;
+    padding: 3px;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 10px;
+    margin: 3px;
+    background-color: #ffffff52;
+    font-size: 12px;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+}
+
+.news-card-2 .post-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 0px 8px black;
+    transition: all 0.3s ease;
+
+
+}
+
+.news-card-2 .post-box:hover .view span{
+    background-color: #070478a3;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+}
+
+.news-card-2 .post-box .text-p {
+    padding: 10px;
+}
+
+.news-card-2 .post-box .text-p h5 {
+    overflow: hidden;
+    height: 40px;
+    color: #000;
+}
+
+.news-card-2 .post-box .text-p p {
+    overflow: hidden;
+    height: 80px;
+    line-height: 2;
+    color: #353535;
+    font-size: 13px;
+    text-align: justify;
+}
+
+.news-card-2 .blog-title-span {
+    display: block;
+    text-align: center;
+}
+
+.news-card-2 .blog-title-span span {
+    display: block;
+    padding: 15px 0;
+    position: relative;
+    font-size: 16px;
+    padding-top: 5px;
+    color: #000;
+}
+
+.news-card-2 .blog-title-span span:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 20px;
+    height: 3px;
+    background-color: #070478;
+    border-radius: 50%;
+}
+
