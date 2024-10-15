@@ -1,4 +1,21 @@
 deployment:
-  type: git
-  repo: https://github.com/saeed-rostami/mokhaberatiha.git
-  branch: main
+  tasks:
+    - name: Pull latest code
+      command: git pull origin main
+      path: /home/mokhabe1/public_html
+
+    - name: Install Composer dependencies
+      command: composer install --ignore-platform-reqs
+      path: /home/mokhabe1/public_html
+
+    - name: Run migrations
+      command: php artisan migrate --force
+      path: /home/mokhabe1/public_html
+
+    - name: Clear caches
+      command: |
+        php artisan cache:clear
+        php artisan route:cache
+        php artisan config:cache
+        php artisan view:cache
+      path: /home/mokhabe1/public_html
