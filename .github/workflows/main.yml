@@ -1,0 +1,32 @@
+name: Deploy Laravel Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: composer install --no-interaction --prefer-dist --ignore-platform-reqs
+
+      - name: Copy .env file
+        run: cp .env.example .env
+
+      - name: Clear Config Cache
+        run: php artisan config:clear
+
+      - name: Deploy to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./ # Adjust this if your Laravel app is in a subdirectory
+          server-dir: /public_html # Adjust this based on your setup
