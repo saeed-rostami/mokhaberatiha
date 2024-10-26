@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Validations\PostRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -14,32 +15,38 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::query()->paginate();
+        $posts =  Post::query()->paginate();
+        return view('admin.pages.posts', compact('posts'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PostRequest $request)
+    public function store(Request $request)
     {
-        $post = Post::query()
-            ->create([
-                'title' => $request->title,
-                'short_description' => $request->short_description,
-                'description' => $request->description,
-                'allow_comment' => $request->allow_comment,
-                'allow_like' => $request->allow_like,
-            ]);
+        try {
+            $request->file('file')->store('images/posts', 'public');
+        } catch (\Throwable $throwable) {
+            return $throwable->getMessage();
+        }
+//        $post = Post::query()
+//            ->create([
+//                'title' => $request->title,
+//                'short_description' => $request->short_description,
+//                'description' => $request->description,
+//                'allow_comment' => $request->allow_comment,
+//                'allow_like' => $request->allow_like,
+//            ]);
 
-        return redirect()->back();
+//        return redirect()->back();
     }
 
     /**

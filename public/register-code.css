@@ -243,7 +243,7 @@ li:focus {
 	width: 100%;
 	display: flex;
 	justify-content: space-around;
-	
+
 }
 
 .log_reg_btn button li a{
@@ -253,7 +253,7 @@ li:focus {
 }
 .log_reg_btn button{
 	width:40%;
-	padding: 0vh;
+	padding: 5px 12px;
 	margin-top:0.5vh;
 	margin-left: -10%;
 	background-color: white;
@@ -338,7 +338,7 @@ li:focus {
     display: block !important;
     text-align: center;
     /* justify-content: space-between !important; */
-    
+
 
 }
 
@@ -561,8 +561,8 @@ body > div.main-header > div > div.col-md-10 > div > ul > li > a:hover  {
 		margin:0.5vh -10%;
 	}
 
-} 
-	
+}
+
 @media screen and (min-width:768px) and (max-width:992px){
 	.menu{
 		width: 40%;

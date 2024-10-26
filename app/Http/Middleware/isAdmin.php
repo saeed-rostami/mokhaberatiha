@@ -20,7 +20,7 @@ class isAdmin
         if (Auth::user()->is_admin == 1) {
             return $next($request);
         }
-        return to_route('auth.home');
+        return to_route('website.index');
         // if (auth()->check()) {
         //     if (auth()->user()->is_admin == 1) {
         //         return $next($request);

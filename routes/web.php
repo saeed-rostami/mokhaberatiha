@@ -48,7 +48,10 @@ Route::middleware('auth:web')->group(function () {
         ->name('register.form');
 
     Route::post('/register', [AuthController::class, 'registerRequest'])->name('register.store');
+
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::post('/vote/{poll_id}/{poll_item_id}', [\App\Http\Controllers\UserPollController::class, 'vote'])->name('poll-user.vote');
 });
 
 
@@ -72,10 +75,24 @@ Route::post('/post-single', [\App\Http\Controllers\CommentController::class , 's
 //    });
 //});
 
+
+//ADMIN ******************
 Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
         Route::middleware('isAdmin')->group(function () {
+
+            Route::get('/panel', function () {
+                return view('admin.index');
+            });
+
+//            USER
+            Route::prefix('user')->group(function () {
+                Route::get("/index", [\App\Http\Controllers\Admin\UserController::class, 'index'])
+                    ->name('user.index');
+            });
+//          END  USER
+
 
 //            POST
             Route::prefix('post')->group(function () {
@@ -100,6 +117,20 @@ Route::prefix('admin')
             });
             //            POST END
 
+//           POLL
+            Route::prefix('poll')->group(function () {
+
+                Route::get('index', [\App\Http\Controllers\Admin\PollController::class, 'index'])
+                    ->name('poll.create');
+
+                Route::get('create', [\App\Http\Controllers\Admin\PollController::class, 'create'])
+                    ->name('poll.create');
+
+                Route::post('store', [\App\Http\Controllers\Admin\PollController::class, 'create'])
+                    ->name('poll.store');
+            });
+//            POLL END
+
 //            SETTINGS
             Route::prefix('settings')->group(function () {
                 Route::get('/', [\App\Http\Controllers\Admin\SettingsController::class, 'index'])
@@ -123,3 +154,10 @@ Route::prefix('admin')
     }
 
     );
+
+Route::get('/artisan', function () {
+    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+    \Illuminate\Support\Facades\Artisan::call('migrate');
+    \Illuminate\Support\Facades\Artisan::call('migrate:fresh');
+    \Illuminate\Support\Facades\Artisan::call('db:seed');
+});

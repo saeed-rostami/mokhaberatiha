@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'User',
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin123'),
-            'mobile' => '09332187732',
+            'mobile' => '989332187732',
             'is_admin' => 1
         ]);
 
@@ -34,12 +34,12 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'User',
             'email' => 'user@user.com',
             'password' => bcrypt('user123'),
-            'mobile' => '09118395667',
+            'mobile' => '989118395667',
             'is_admin' => 0
         ]);
 
-        $cities = json_decode(file_get_contents("resources/cities.json"));
-        $provinces = json_decode(file_get_contents("resources/provinces.json"));
+        $cities = json_decode(file_get_contents(resource_path('cities.json')));
+        $provinces = json_decode(file_get_contents(resource_path('provinces.json')));
 
         foreach ($provinces as $province) {
 
