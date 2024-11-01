@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Province;
+use App\Models\User;
 use App\Rules\MobileRule;
 use App\Traits\OTPTrait;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -153,5 +155,66 @@ class AuthController extends Controller
     public function getCity($id)
     {
         return City::query()->where('province_id', $id)->get();
+    }
+
+    public function forgotOTPForm()
+    {
+        return view('auth.forgot-password');
+    }
+
+    public function sendForgotOTP(Request $request)
+    {
+        $mobile = $this->normalizePhoneNumber($request->mobile);
+        $request->merge([
+            'mobile' => $mobile
+        ]);
+        $request->validate([
+            'mobile' => ['required', 'exists:users,mobile', new MobileRule()],
+        ]);
+
+        $otp = $this->forgotOTPRequest($mobile);
+
+        return view('auth.forgot-password-code')
+            ->with(['otp' => $otp, 'mobile' => $mobile]);
+
+    }
+
+    public function verifyForgotAndLogin(Request $request)
+    {
+        $request->validate([
+            'num_1' => ['required', 'string', 'min:1', 'max:1'],
+            'num_2' => ['required', 'string', 'min:1', 'max:1'],
+            'num_3' => ['required', 'string', 'min:1', 'max:1'],
+            'num_4' => ['required', 'string', 'min:1', 'max:1'],
+            'mobile' => ['required', 'exists:users,mobile'],
+        ]);
+        $num_1 = $request->num_1;
+        $num_2 = $request->num_2;
+        $num_3 = $request->num_3;
+        $num_4 = $request->num_4;
+
+        $code = $num_1 . $num_2 . $num_3 . $num_4;
+        $mobile = $request->mobile;
+
+        $user = User::query()
+            ->where('mobile', $mobile)
+            ->first();
+
+        $bool = $this->attempt($mobile, $code);
+        if ($bool) {
+            $password = Str::random(8);
+            $password_hashed = Hash::make($password);
+            $user->update([
+                'password' => $password_hashed,
+            ]);
+            Auth::guard('web')->login($user);
+
+            return redirect()->route(
+                'website.index'
+            );
+        }
+        return redirect()->route(
+            'website.index'
+        );
     }
 }

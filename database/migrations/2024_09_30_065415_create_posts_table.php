@@ -24,6 +24,7 @@ return new class extends Migration
 
             $table->boolean('allow_comment')->default(1);
             $table->boolean('allow_like')->default(1);
+            $table->unsignedBigInteger('view')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

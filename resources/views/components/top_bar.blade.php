@@ -8,20 +8,24 @@
 </div>
 <div class="log_reg_btn_parent">
     @auth()
-        <div>
-            خوش آمدید
-            {{ auth()->user()->mobile }}
+        <div class="log_reg_btn">
+{{--            خوش آمدید--}}
+{{--            {{ auth()->user()->mobile }}--}}
 
-            <form METHOD="get" action="{{ route('logout') }}">
-                @csrf
+{{--            <form METHOD="get" action="{{ route('logout') }}">--}}
+{{--                @csrf--}}
 
-                <button>
-                    <button type="submit" class="btn btn-primary">خروج</button>
+{{--                <button>--}}
+{{--                    <a href="{{ route('logout') }}" type="submit" class="btn btn-primary">خروج</a>--}}
 
-                </button>
-            </form>
+            <a href="{{route('logout')}}" class="btn" role="button"><button class="btn">خروج</button></a>
+
+{{--                </button>--}}
+{{--            </form>--}}
+{{--            <p id="date" style="width:50%;direction: ltr;margin-top: 2vh;">--}}
             <p id="date" style="width:50%;direction: ltr;margin-top: 2vh;">
-            {{ verta()->format('Y/m/d') }}
+                {{ verta()->format('Y/m/d') }}
+            </p>
         </div>
     @endauth
     @guest()

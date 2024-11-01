@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('about_text')->nullable();
-            $table->string('phone_numbers')->nullable();
+            $table->text('about_text')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('mobile_number')->nullable();
+            $table->string('email')->nullable();
             $table->string('address')->nullable();
             $table->float('long')->nullable();
             $table->float('lat')->nullable();

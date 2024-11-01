@@ -13,17 +13,17 @@
         <li class="item-li i-dashboard is-active"><a href="index.html">پیشخوان</a></li>
         <li class="item-li i-courses "><a href="{{ route('post.index') }}">اتاق اخبار</a></li>
         <li class="item-li i-users"><a href={{ route('user.index') }}> کاربران</a></li>
-        <li class="item-li i-slideshow"><a href="categories.html">انجمن ها</a></li>
-        <li class="item-li i-ads"><a href="ads.html">تبلیغات</a></li>
-        <li class="item-li i-comments"><a href="comments.html"> نظرات</a></li>
-        <li class="item-li i-tickets"><a href="tickets.html"> تیکت ها</a></li>
-        <li class="item-li i-comments"><a href="comments.html"> نظرسنجی</a></li>
-        <li class="item-li i-notification__management"><a href="notification-management.html">مدیریت اطلاع رسانی</a>
+        <li class="item-li i-slideshow"><a href="{{ route('admin.society.index') }}">انجمن ها</a></li>
+{{--        <li class="item-li i-ads"><a href="ads.html">تبلیغات</a></li>--}}
+        <li class="item-li i-comments"><a href="{{ route('comment.index') }}"> نظرات</a></li>
+{{--        <li class="item-li i-tickets"><a href="tickets.html"> تیکت ها</a></li>--}}
+        <li class="item-li i-comments"><a href="{{ route('poll.index') }}"> نظرسنجی</a></li>
+{{--        <li class="item-li i-notification__management"><a href="notification-management.html">مدیریت اطلاع رسانی</a>--}}
         </li>
-        <li class="item-li i-user__inforamtion"><a href="user-information.html">تماس با ما</a></li>
-        <li class="item-li i-categories"><a href="user-information.html">درباره ما</a></li>
+{{--        <li class="item-li i-user__inforamtion"><a href="user-information.html">تماس با ما</a></li>--}}
+        <li class="item-li i-categories"><a href="{{ route('settings.index') }}">درباره ما</a></li>
 
-        <li class="item-li i-user__inforamtion"><a href="user-information.html">اطلاعات کاربری</a></li>
+{{--        <li class="item-li i-user__inforamtion"><a href="user-information.html">اطلاعات کاربری</a></li>--}}
     </ul>
 
 </div>

@@ -6,27 +6,43 @@
                     @if( request()->route()->getName() !== 'website.index')
                         <li><a href="{{route('website.index')}}"><p>صفحه اصلی </p></a></li>
                     @endif
+                    @if( request()->route()->getName() !== 'website.news')
                         <li><a href="{{route('website.news')}}"><p>اتاق خبر</p></a></li>
-                    <!-- <li><p href="#">اقتصادی</p></li> -->
-                    <li>
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                انجمن ها
-                            </a>
+                    @endif
+                        <li><a href="{{ route('website.societies') }}"><p>انجمن ها</p></a></li>
+{{--                        <li id="society-res-hide">--}}
+{{--                            <div class="dropdown">--}}
+{{--                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">--}}
+{{--                                    انجمن ها--}}
+{{--                                </a>--}}
 
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">استان ها</a></li>
-                                <li><a class="dropdown-item" href="#">نمایندگی استان ها</a></li>
-                                <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                            </ul>
-                        </div>
+{{--                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">--}}
+{{--                                    <li class="dropstart">--}}
+{{--                                        <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">استان ها</a>--}}
+{{--                                        <ul class="dropdown-menu">--}}
+{{--                                            <li>--}}
+{{--                                                <a href="" class="dropdown-item">تهران</a>--}}
+{{--                                                <a href="" class="dropdown-item">گیلان</a>--}}
+{{--                                                <a href="" class="dropdown-item">اصفهان</a>--}}
+{{--                                                <a href="society.html" class="dropdown-item" style="display: flex; justify-content: space-between; align-items: center;">--}}
+{{--                                                    <i class="fa-solid fa-arrow-left-long"></i>--}}
+{{--                                                    مشاهده کامل--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
+                    <li><a href="{{ route('website.archives') }}"><p class="text-center">آرشیو تصاویر</p></a></li>
+{{--                    <li><p href="#">قوانین و دستورالعمل ها</p></li>--}}
+                    <li><a href="{{ route('about-us') }}"><p class="text-center">درباره ما</p></a></li>
+                    <li><a href="{{ route('contact-us') }}"><p class="text-center">تماس با ما</p></a></li>
 
-                    </li>
-                    <li><p href="#">آرشیو تصاویر </p></li>
-                    <li><p href="#">قوانین و دستورالعمل ها</p></li>
-                    <li><p href="#">درباره ما</p></li>
-                    <li><p href="#">تماس با ما</p></li>
-                    <li><a href="{{ route('mobile.otpForm') }}"><p class="text-center">عضویت</p></a></li>
+
+                        @if( request()->route()->getName() !== 'mobile.otpForm')
+                            <li><a href="{{ route('mobile.otpForm') }}"><p class="text-center">عضویت</p></a></li>
+                        @endif
 
                 </ul>
             </div>

@@ -14,14 +14,27 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
-                ->nullable()
                 ->references('id')
                 ->on('users')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
 
-            $table->morphs('item');
+            $table->foreignId('post_id')
+                ->references('id')
+                ->on('posts')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+
+            $table->foreignId('reply_to')
+                ->nullable()
+                ->references('id')
+                ->on('posts')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+
+            $table->string('comment');
             $table->boolean('is_confirmed')->default(0);
+            $table->boolean('is_admin')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

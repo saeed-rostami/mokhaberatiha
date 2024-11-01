@@ -26,7 +26,9 @@
 
                 <div class="col-auto extra-text-parent">
                <span id="passwordHelpInline" class="form-text forget-password">
-                  <p class="text-black-50"> فراموشی رمزعبور</p>
+                  <p class="text-black-50">
+                  <a href="{{ route('forgotOTPForm') }}">فراموشی رمزعبور</a>
+                  </p>
                   </span>
 
                     <span id="passwordHelpInline" class="form-text checkbox">

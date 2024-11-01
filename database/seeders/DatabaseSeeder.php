@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\City;
 use App\Models\Province;
+use App\Models\Settings;
 use App\Models\User;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Note;
@@ -56,6 +58,22 @@ class DatabaseSeeder extends Seeder
                     "province_id" => $city->province_id,
                 ]);
         }
+
+        $socials = ['telegram' => 'telegram',
+             'whatsapp' => 'whatsapp'
+            , 'instagram' => 'instagram'];
+
+        $socials = json_encode($socials);
+        Settings::query()
+            ->create([
+                'about_text' => 'This is about text',
+                'email' => 'example@gmail.com',
+                'mobile_number' => '0911000000',
+                'phone_numbers' => '01300000',
+                'address' => 'This is about address',
+                'socials' => $socials,
+
+            ]);
 
 
         // Note::factory(100)->create();

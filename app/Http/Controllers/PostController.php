@@ -9,8 +9,12 @@ class PostController extends Controller
 {
     public function single($post_id)
     {
-        return Post::query()
+        $post = Post::query()
             ->find($post_id);
+
+        $post->increment('view');
+
+        return view('website.singleNew', compact('post'));
     }
 
 }

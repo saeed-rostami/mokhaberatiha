@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewsPublished;
+use App\Models\Archive;
+use App\Models\Image;
 use App\Models\Post;
 use App\Validations\PostRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -15,16 +19,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts =  Post::query()->paginate();
+        $posts = Post::query()->paginate(25);
         return view('admin.pages.posts', compact('posts'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
-
+        return view('admin.components.postCreate');
     }
 
     /**
@@ -32,21 +36,46 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => ['required' , 'string' ],
+            'description' => ['required' , 'string' ],
+            'file' => ['required' , 'file'],
+        ]);
         try {
-            $request->file('file')->store('images/posts', 'public');
+            $path = $request->file('file')->store('images/posts', 'public');
         } catch (\Throwable $throwable) {
             return $throwable->getMessage();
         }
-//        $post = Post::query()
-//            ->create([
-//                'title' => $request->title,
-//                'short_description' => $request->short_description,
-//                'description' => $request->description,
-//                'allow_comment' => $request->allow_comment,
-//                'allow_like' => $request->allow_like,
-//            ]);
+        $post = Post::query()
+            ->create([
+                'title' => $request->title,
+                'short_description' => $request->description,
+                'description' => $request->description,
+                'allow_comment' => $request->allow_comment ?? true,
+                'allow_like' => $request->allow_like ?? true,
+            ]);
 
-//        return redirect()->back();
+        Image::query()
+            ->create([
+                'item_type' => Post::class,
+                'item_id' => $post->id,
+                'path' => $path
+            ]);
+
+        if ($request->archive) {
+            $archive_path = $request->file('file')->store('images/archives', 'public');
+            Archive::query()
+                ->create([
+                    'path' => $archive_path
+                ]);
+        }
+
+//        if ($request->notif) {
+//            Mail::to(['saeedrostami1991@gmail.com'])
+//            ->send(new NewsPublished());
+//        }
+
+        return redirect()->back();
     }
 
     /**
@@ -61,9 +90,9 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+        return view("admin.components.postUpdate" , compact('post'));
     }
 
     /**
@@ -75,11 +104,23 @@ class PostController extends Controller
             ->find($post_id)
             ->update([
                 'title' => $request->title,
-                'short_description' => $request->short_description,
+                'short_description' => $request->description,
                 'description' => $request->description,
-                'allow_comment' => $request->allow_comment,
-                'allow_like' => $request->allow_like,
+                'allow_comment' => $request->allow_comment ?? 0,
+                'allow_like' => $request->allow_like ?? 0,
             ]);
+
+
+        if ($request->hasFile('file')) {
+            $path = $request->file('file')->store('images/posts', 'public');
+
+            Image::query()
+                ->create([
+                    'item_type' => Post::class,
+                    'item_id' => $post_id,
+                    'path' => $path
+                ]);
+        }
 
         return redirect()->back();
 
@@ -88,10 +129,9 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(int $post_id)
+    public function delete(Post $post)
     {
-        Post::query()
-            ->find($post_id)
+        $post
             ->delete();
 
         return redirect()->back();

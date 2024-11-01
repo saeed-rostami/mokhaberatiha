@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\ServiceProvider;
+
 return [
 
     /*
@@ -14,6 +16,21 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        /*
+         * Package Service Providers...
+         */
+
+        /*
+         * Application Service Providers...
+         */
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+    ])->toArray(),
+
+    'aliases' => [
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------

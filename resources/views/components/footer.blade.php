@@ -2,13 +2,9 @@
     <div class="container-fluid">
         <div class="col-md-5">
             <div class="footer-box">
-                <span class="title">مجله seo90</span>
-                <p>متن ساختگی با تولید سادگی نامفهوم تولید سادگی از صنعت متن ساختگی با تولید سادگی نامفهوم تولید
-                    سادگی از صنعت متن ساختگی با تولید سادگی نامفهوم تولید سادگی از صنعت متن ساختگی با تولید سادگی از
-                    صنعت متن ساختگی با تولید سادگی نامفهوم تولید سادگی از صنعت متن ساختگی با تولید سادگی نامفهوم
-                    تولید سادگی از صنعت متن ساختگی بام تولید سادگی از صنعت متن ساختگی با تولید سادگی نامفهوم تولید
-                    سادگی از صنعت متن ساختگی با تولید سادگی نامفهوم تولید سادگی از صنعت متن سادگی نامفهوم تولید
-                    سادگی از صنعت
+{{--                <span class="title">مجله seo90</span>--}}
+                <p>
+                    {{$setting->about_text}}
                 </p>
             </div>
         </div>
@@ -39,14 +35,20 @@
         <div class="col-md-3">
             <div class="footer-box contact-box">
                 <span class="title">تماس با ما</span>
-                <p><i class="fa fa-phone"></i> 09389983373</p>
-                <p><i class="fa fa-phone"></i> 09389983373</p>
-                <p><i class="fa fa-envelope-o"></i> Mokhaberatiha.ir@</p>
-                <p><i class="fa fa-map-marker"></i> گیلان </p>
+                <p><i class="fa fa-mobile"></i> {{ $setting->mobile_number}}</p>
+                <p><i class="fa fa-phone"></i> {{ $setting->phone_numbers}}</p>
+                <p><i class="fa fa-envelope-o"></i> {{ $setting->email}}</p>
+                <p><i class="fa fa-map-marker"></i> {{ $setting->address}} </p>
                 <div class="socialbox">
-                    <p><a href="#"><i class="fa-brands fa-x-twitter"></i></a></p>
-                    <p><a href="#"><i class="fa fa-facebook"></i></a></p>
-                    <p><a href="#"><i class="fa fa-instagram"></i></a></p>
+                    <p><a href="#"><i class="fa fa-telegram"></i>
+{{--                            {{ json_decode($setting->socials)->telegram}}--}}
+                        </a></p>
+                    <p><a href="#"><i class="fa fa-instagram">
+{{--                                {{ json_decode($setting->socials)->instagram}}--}}
+                            </i></a></p>
+                    <p><a href="#"><i class="fa fa-whatsapp">
+{{--                                {{ json_decode($setting->socials)->whatsapp}}--}}
+                            </i></a></p>
                 </div>
             </div>
         </div>

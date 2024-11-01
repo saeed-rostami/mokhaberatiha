@@ -1,25 +1,22 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('رمز عبور خود را فراموش کرده اید؟ مشکلی نیست فقط آدرس ایمیل خود را به ما اطلاع دهید و ما یک پیوند بازنشانی رمز عبور را برای شما ایمیل می کنیم که به شما امکان می دهد رمز جدیدی را انتخاب کنید.') }}
+@extends('website.layout' , ['title' => 'فراموشی رمز عبور'])
+
+@section('content')
+    <div class="container">
+        <form method="post" action="{{ route('sendForgotOTP') }}" id="phone-get-form">
+            @csrf
+            <label class="form-label">
+                <h3>
+                    شماره تماس خود را وارد کنید...
+                </h3>
+            </label>
+            <div class="get-phone-inp">
+                <input type="text" name="mobile" id="" class="form-control" required placeholder="09.........">
+            </div>
+            <button type="submit" class="btn varify">ارسال کد اعتبارسنجی</button>
+        </form>
+        @include('components.errors')
+
     </div>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('ایمیل')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('لینک ریست پسورد') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    <br><br><br><br>
+@endsection

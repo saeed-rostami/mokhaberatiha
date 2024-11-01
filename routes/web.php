@@ -1,16 +1,38 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('website.index');
-})->name('website.index');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('website.index');
+
+//Route::get('/post/{post_id}', [\App\Http\Controllers\HomeController::class, 'single'])->name('post.single');
+//
+//Route::get('/posss/sa', function () {
+//    $post = Post::query()
+//        ->find(3);
+//    return view('website.singleNew' , compact('post'));
+//});
+//
+//Route::get('/po', function () {
+//    $post = Post::query()
+//        ->find(3);
+//    return view('website.singleNew' , compact('post'));
+//});
 
 Route::get('/news',[\App\Http\Controllers\HomeController::class, 'news'])->name('website.news');
 
+Route::get('/about-us',[\App\Http\Controllers\HomeController::class, 'aboutUs'])->name('about-us');
+
+Route::get('/contact-us',[\App\Http\Controllers\HomeController::class, 'contactUs'])->name('contact-us');
+
+Route::get('/archives',[\App\Http\Controllers\HomeController::class, 'archives'])->name('website.archives');
+
+Route::get('/societies/{province_id?}',[\App\Http\Controllers\SocietyController::class, 'index'])->name('website.societies');
+
 Route::get('/dashboard', function () {
-    return view('dashboard.index');
+    return \Illuminate\Support\Facades\Auth::user();
+//    return view('dashboard.index');
 })->name('dashboard');
 
 Route::get('/get_city/{id}', [AuthController::class , 'getCity']);
@@ -41,6 +63,15 @@ Route::middleware('guest')->group(function () {
 
     Route::post('/otp-verification', [AuthController::class, 'otpVerification'])
         ->name('mobile.otpVerification');
+
+    Route::get('/forgot-otp-form', [AuthController::class, 'forgotOTPForm'])
+        ->name('forgotOTPForm');
+
+    Route::post('/send-forgot-otp', [AuthController::class, 'sendForgotOTP'])
+        ->name('sendForgotOTP');
+
+    Route::post('/verify-forgot-otp', [AuthController::class, 'verifyForgotAndLogin'])
+        ->name('verify.forgot.otp');
 });
 
 Route::middleware('auth:web')->group(function () {
@@ -51,20 +82,19 @@ Route::middleware('auth:web')->group(function () {
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::post('/vote/{poll_id}/{poll_item_id}', [\App\Http\Controllers\UserPollController::class, 'vote'])->name('poll-user.vote');
+    Route::post('/vote', [\App\Http\Controllers\UserPollController::class, 'vote'])->name('poll-user.vote');
+
+    //COMMENT
+    Route::post('/comment/store', [\App\Http\Controllers\CommentController::class , 'store'])
+        ->name('comment.store');
+//END COMMENT
 });
 
 
 //POST
-Route::get('/post-single/{post_id}', [\App\Http\Controllers\PostController::class , 'single'])
+Route::get('/{post_id}', [\App\Http\Controllers\PostController::class , 'single'])
     ->name('post.single');
 //END POST
-
-
-//COMMENT
-Route::post('/post-single', [\App\Http\Controllers\CommentController::class , 'store'])
-    ->name('comment.store');
-//END COMMENT
 
 
 
@@ -90,6 +120,9 @@ Route::prefix('admin')
             Route::prefix('user')->group(function () {
                 Route::get("/index", [\App\Http\Controllers\Admin\UserController::class, 'index'])
                     ->name('user.index');
+
+                Route::get("/export", [\App\Http\Controllers\Admin\UserController::class, 'export'])
+                    ->name('user.export');
             });
 //          END  USER
 
@@ -109,11 +142,14 @@ Route::prefix('admin')
                 Route::post("/store", [\App\Http\Controllers\Admin\PostController::class, 'store'])
                     ->name('post.store');
 
-                Route::get("/edit/{post_id}", [\App\Http\Controllers\Admin\PostController::class, 'edit'])
+                Route::get("/edit/{post}", [\App\Http\Controllers\Admin\PostController::class, 'edit'])
                     ->name('post.edit');
 
-                Route::put("/update/{post_id}", [\App\Http\Controllers\Admin\PostController::class, 'update'])
+                Route::post("/update/{post_id}", [\App\Http\Controllers\Admin\PostController::class, 'update'])
                     ->name('post.update');
+
+                Route::delete("/delete/{post}", [\App\Http\Controllers\Admin\PostController::class, 'delete'])
+                    ->name('post.delete');
             });
             //            POST END
 
@@ -121,13 +157,28 @@ Route::prefix('admin')
             Route::prefix('poll')->group(function () {
 
                 Route::get('index', [\App\Http\Controllers\Admin\PollController::class, 'index'])
-                    ->name('poll.create');
+                    ->name('poll.index');
 
                 Route::get('create', [\App\Http\Controllers\Admin\PollController::class, 'create'])
                     ->name('poll.create');
 
-                Route::post('store', [\App\Http\Controllers\Admin\PollController::class, 'create'])
+                Route::post('store', [\App\Http\Controllers\Admin\PollController::class, 'store'])
                     ->name('poll.store');
+
+                Route::get('edit/{poll}', [\App\Http\Controllers\Admin\PollController::class, 'edit'])
+                    ->name('poll.edit');
+
+                Route::post('update', [\App\Http\Controllers\Admin\PollController::class, 'update'])
+                    ->name('poll.update');
+
+                Route::post('delete/{poll}', [\App\Http\Controllers\Admin\PollController::class, 'delete'])
+                    ->name('poll.delete');
+
+                Route::get('statistic/{poll}', [\App\Http\Controllers\Admin\PollController::class, 'statistic'])
+                    ->name('poll.statistic');
+
+                Route::get('activation/{poll}', [\App\Http\Controllers\Admin\PollController::class, 'activation'])
+                    ->name('poll.activation');
             });
 //            POLL END
 
@@ -141,14 +192,47 @@ Route::prefix('admin')
 
                 Route::post('/store', [\App\Http\Controllers\Admin\SettingsController::class, 'store'])
                     ->name('settings.store');
-
-                Route::get('/edit', [\App\Http\Controllers\Admin\SettingsController::class, 'edit'])
-                    ->name('settings.edit');
-
-                Route::post('/update', [\App\Http\Controllers\Admin\SettingsController::class, 'update'])
-                    ->name('settings.update');
             });
 //            SETTINGS END
+
+            //            COMMENTS
+            Route::prefix('comments')->group(function () {
+                Route::get('/', [\App\Http\Controllers\Admin\CommentController::class, 'index'])
+                    ->name('comment.index');
+
+                Route::post('/reject/{comment}', [\App\Http\Controllers\Admin\CommentController::class, 'reject'])
+                    ->name('comment.reject');
+
+                Route::post('/approve/{comment}', [\App\Http\Controllers\Admin\CommentController::class, 'approve'])
+                    ->name('comment.approve');
+
+                Route::get('/response/{comment}', [\App\Http\Controllers\Admin\CommentController::class, 'response'])
+                    ->name('response.comment');
+
+                Route::post('/response/{comment}', [\App\Http\Controllers\Admin\CommentController::class, 'sendResponse'])
+                    ->name('send.response.comment');
+            });
+
+
+//            COMMENTS END
+
+
+            //           SOCIETY
+            Route::prefix('society')->group(function () {
+                Route::get('/', [\App\Http\Controllers\Admin\SocietyController::class, 'index'])
+                    ->name('admin.society.index');
+
+                Route::get('/create', [\App\Http\Controllers\Admin\SocietyController::class, 'create'])
+                    ->name('admin.society.create');
+
+                Route::post('/store', [\App\Http\Controllers\Admin\SocietyController::class, 'store'])
+                    ->name('admin.society.store');
+
+
+                Route::delete('/delete/{society}', [\App\Http\Controllers\Admin\SocietyController::class, 'delete'])
+                    ->name('admin.society.delete');
+            });
+//            SOCIETY END
 
         });
     }
@@ -156,8 +240,9 @@ Route::prefix('admin')
     );
 
 Route::get('/artisan', function () {
-    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
-    \Illuminate\Support\Facades\Artisan::call('migrate');
-    \Illuminate\Support\Facades\Artisan::call('migrate:fresh');
-    \Illuminate\Support\Facades\Artisan::call('db:seed');
+//    \Illuminate\Support\Facades\Artisan::call('storage:link');
+//    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+//    \Illuminate\Support\Facades\Artisan::call('migrate');
+//    \Illuminate\Support\Facades\Artisan::call('migrate:fresh');
+//    \Illuminate\Support\Facades\Artisan::call('db:seed');
 });

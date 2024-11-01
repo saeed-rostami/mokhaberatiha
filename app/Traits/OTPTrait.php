@@ -24,6 +24,7 @@ trait OTPTrait
             return true;
         }
 
+
         return false;
     }
 
@@ -108,6 +109,15 @@ trait OTPTrait
     public function guard()
     {
         return Auth::guard('web');
+    }
+
+    public function forgotOTPRequest($mobile)
+    {
+        if ($otp = $this->findUserByMobile($mobile)) {
+            $otp = $this->regenerateOtp($otp);
+//            $otp = $this->createOtpRelation($otp->user->id, $otp->user->mobile);
+        }
+        return $otp;
     }
 
 }
