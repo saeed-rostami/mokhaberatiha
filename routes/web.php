@@ -240,9 +240,9 @@ Route::prefix('admin')
     );
 
 Route::get('/artisan', function () {
+    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
 //    \Illuminate\Support\Facades\Artisan::call('storage:link');
-//    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
 //    \Illuminate\Support\Facades\Artisan::call('migrate');
-//    \Illuminate\Support\Facades\Artisan::call('migrate:fresh');
-//    \Illuminate\Support\Facades\Artisan::call('db:seed');
+    \Illuminate\Support\Facades\Artisan::call('migrate:fresh');
+    \Illuminate\Support\Facades\Artisan::call('db:seed');
 });

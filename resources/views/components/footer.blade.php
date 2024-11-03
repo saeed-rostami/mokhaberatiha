@@ -40,14 +40,12 @@
                 <p><i class="fa fa-envelope-o"></i> {{ $setting->email}}</p>
                 <p><i class="fa fa-map-marker"></i> {{ $setting->address}} </p>
                 <div class="socialbox">
-                    <p><a href="#"><i class="fa fa-telegram"></i>
-{{--                            {{ json_decode($setting->socials)->telegram}}--}}
-                        </a></p>
-                    <p><a href="#"><i class="fa fa-instagram">
-{{--                                {{ json_decode($setting->socials)->instagram}}--}}
+                    <p><a target="_blank" href="{{'http://telegram.com/'.json_decode($setting->socials)->telegram}}"><i class="fa fa-telegram">
                             </i></a></p>
-                    <p><a href="#"><i class="fa fa-whatsapp">
-{{--                                {{ json_decode($setting->socials)->whatsapp}}--}}
+
+                    <p><a target="_blank" href="{{'http://instagram.com/'.json_decode($setting->socials)->instagram}}"><i class="fa fa-instagram">
+                            </i></a></p>
+                    <p><a target="_blank" href="{{'http://whatsapp.com/'.json_decode($setting->socials)->whatsapp}}"><i class="fa fa-whatsapp">
                             </i></a></p>
                 </div>
             </div>

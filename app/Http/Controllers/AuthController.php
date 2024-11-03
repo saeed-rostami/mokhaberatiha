@@ -80,8 +80,8 @@ class AuthController extends Controller
     {
         $request->validate([
 //            'username' => ['required', 'unique:users,username'],
-//            'first_name' => ['required', 'max:255', 'min:2', 'string'],
-//            'last_name' => ['required', 'max:255', 'min:2', 'string'],
+            'first_name' => ['required', 'max:255', 'min:2', 'string'],
+            'last_name' => ['required', 'max:255', 'min:2', 'string'],
 //            'address' => ['required', 'max:255', 'min:8', 'string'],
             'email' => 'required|email|unique:users,email',
 //            'mobile' => ['required', 'unique:users,mobile', new MobileRule()],
@@ -94,8 +94,8 @@ class AuthController extends Controller
         $user = Auth::user();
         $user->update([
 //            'username' => $request->username,
-//            'first_name' => $request->first_name,
-//            'last_name' => $request->last_name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'email' => $request->email,
             'city_id' => $request->city,
             'job_position' => $request->job_position,

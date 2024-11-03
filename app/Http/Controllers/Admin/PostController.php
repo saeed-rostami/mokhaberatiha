@@ -75,7 +75,7 @@ class PostController extends Controller
 //            ->send(new NewsPublished());
 //        }
 
-        return redirect()->back();
+        return redirect()->route('post.index');
     }
 
     /**

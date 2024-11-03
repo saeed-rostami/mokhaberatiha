@@ -15,21 +15,21 @@
                     <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                 </div>
 
-{{--                <div class="name-parent">--}}
-{{--                    <div class="mb-3" style="width: 45%;">--}}
-{{--                        <label for="first_name" class="form-label">نام کوچک</label>--}}
-{{--                        <input name="first_name" type="first_name" class="form-control" id="exampleInputUser" aria-describedby="userHelp"--}}
-{{--                               placeholder="لطفا نام خود را وارد کنید..." required>--}}
-{{--                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->--}}
-{{--                    </div>--}}
+                <div class="name-parent">
+                    <div class="mb-3" style="width: 45%;">
+                        <label for="first_name" class="form-label">نام کوچک</label>
+                        <input name="first_name" type="first_name" class="form-control" id="exampleInputUser" aria-describedby="userHelp"
+                               placeholder="لطفا نام خود را وارد کنید..." required>
+                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                    </div>
 
-{{--                    <div class="mb-3" style="width: 47%;">--}}
-{{--                        <label for="last_name" class="form-label">نام خانوادگی</label>--}}
-{{--                        <input name="last_name" type="last_name" class="form-control" id="exampleInputUser" aria-describedby="userHelp"--}}
-{{--                               placeholder="لطفا نام خانوادگی خود را وارد کنید..." required>--}}
-{{--                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                    <div class="mb-3" style="width: 47%;">
+                        <label for="last_name" class="form-label">نام خانوادگی</label>
+                        <input name="last_name" type="last_name" class="form-control" id="exampleInputUser" aria-describedby="userHelp"
+                               placeholder="لطفا نام خانوادگی خود را وارد کنید..." required>
+                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                    </div>
+                </div>
 
 
                 <div class="mb-3">
